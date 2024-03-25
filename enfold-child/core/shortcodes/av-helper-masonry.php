@@ -237,112 +237,131 @@ if ( !class_exists( 'avia_masonry' ) )
 			$output .= "<div class='av-masonry-container isotope av-js-disabled ' >";
 			$all_sorts  = array();
 			$sort_array = array();
-			foreach($this->loop as $entry)
+			//$loopcount = 0;
+			foreach($this->loop as $loopcount=>$entry)
 			{
-				extract(array_merge($defaults, $entry));
-				$img_html		= "";
-				$img_style		= "";
-				if($this->atts['sort'] != "no")
-				{
-					$sort_array		= $this->sort_array($entry['ID']);
-				}
-				$class_string 	= implode(' ', $class).' '.implode(' ', $sort_array);
-				$all_sorts 		= array_merge($all_sorts, $sort_array);
-				
-				if(!empty($attachment))
-				{
-                    $alt = get_post_meta($thumb_ID, '_wp_attachment_image_alt', true);
-                    $alt = !empty($alt) ? esc_attr($alt) : '';
-                    $title = esc_attr(get_the_title($thumb_ID));
+				if($loopcount == 3 ): // event block
+					$items .= get_homepage_event_block();
+					// $items .= 	"<a id='av-masonry-".self::$element."-item-".$loopcount."' data-av-masonry-item='".$loopcount."' class='{$class_string}'  {$linktitle} {$markup}>";
+					// $items .= 		"<div class='av-inner-masonry-sizer'></div>"; //responsible for the size
+					// $items .=		"<figure class='av-inner-masonry main_color'>";
+					// 		$items .=	"<figcaption class='av-inner-masonry-content site-background'><div class='av-inner-masonry-content-pos'><div class='av-inner-masonry-content-pos-content'><div class='avia-arrow'></div>".$text_before;
+					// 		$items .=   "<span class='ipopi_homepage_tag' ".$tag_color." ><span class='ipopi_homepage_tag_label'>".$ipopi_homepage_tag."</span></span>";
+					// 		$items .=	"<h3 class='ipopi_homepage-masonry-entry-title av-masonry-entry-title entry-title' {$markup}>{$the_title}</h3>";
+					// 		$items .=	"<div class='av-masonry-entry-content entry-content' >{$ipopi_homepage_excerpt}</div>";
+					// 		$items .=	"<div class='av-masonry-entry-content entry-content' {$markup}>{$content}</div>";
+					// 		$items .=	$text_after."</div><div class='av-inner-masonry-content-pos-content-bg'></div></div></figcaption>";
+					// $items .= 		"</figure>";
+					// $items .= 	"</a><!--end av-masonry entry-->";
+				else:
+					extract(array_merge($defaults, $entry));
+					$img_html		= "";
+					$img_style		= "";
+					if($this->atts['sort'] != "no")
+					{
+						$sort_array		= $this->sort_array($entry['ID']);
+					}
+					$class_string 	= implode(' ', $class).' '.implode(' ', $sort_array);
+					$all_sorts 		= array_merge($all_sorts, $sort_array);
+					
+					if(!empty($attachment))
+					{
+	                    $alt = get_post_meta($thumb_ID, '_wp_attachment_image_alt', true);
+	                    $alt = !empty($alt) ? esc_attr($alt) : '';
+	                    $title = esc_attr(get_the_title($thumb_ID));
 
-					if(isset($attachment[0]))
+						if(isset($attachment[0]))
+						{
+							$img_html  = '<img src="'.$attachment[0].'" title="'.$title.'" alt="'.$alt.'" />';
+							$img_style = 'style="background-image: url('.$attachment[0].');"';
+							$class_string .= " av-masonry-item-with-image";
+						}
+						
+						if(isset($attachment_overlay[0]))
+						{
+							$over_html  = '<img src="'.$attachment_overlay[0].'" title="'.$title.'" alt="'.$alt.'" />';
+							$over_style = 'style="background-image: url('.$attachment_overlay[0].');"';
+							$img_before = '<div class="av-masonry-image-container av-masonry-overlay" '.$over_style.'>'.$over_html.'</div>';
+						}
+						
+						$bg = '<div class="av-masonry-outerimage-container">'.$img_before.'<div class="av-masonry-image-container" '.$img_style.'>'.$img_html.'</div></div>';
+						
+					}
+					else
 					{
-						$img_html  = '<img src="'.$attachment[0].'" title="'.$title.'" alt="'.$alt.'" />';
-						$img_style = 'style="background-image: url('.$attachment[0].');"';
-						$class_string .= " av-masonry-item-with-image";
+						$class_string .= " av-masonry-item-no-image";
 					}
 					
-					if(isset($attachment_overlay[0]))
+					
+					if($size == 'fixed')
 					{
-						$over_html  = '<img src="'.$attachment_overlay[0].'" title="'.$title.'" alt="'.$alt.'" />';
-						$over_style = 'style="background-image: url('.$attachment_overlay[0].');"';
-						$img_before = '<div class="av-masonry-image-container av-masonry-overlay" '.$over_style.'>'.$over_html.'</div>';
+						if(!empty($attachment) || !empty($before_content))
+						{
+							if($auto)
+								$class_string .= $this->ratio_check_by_image_size($attachment);
+								
+							if($manually)
+								$class_string .= $this->ratio_check_by_tag($entry['tags']);	
+						}
 					}
 					
-					$bg = '<div class="av-masonry-outerimage-container">'.$img_before.'<div class="av-masonry-image-container" '.$img_style.'>'.$img_html.'</div></div>';
+					$linktitle = "";
 					
-				}
-				else
-				{
-					$class_string .= " av-masonry-item-no-image";
-				}
-				
-				
-				if($size == 'fixed')
-				{
-					if(!empty($attachment) || !empty($before_content))
+	                if($post_type == 'attachment' && strpos($html_tags[0], 'a href=') !== false)
+	                {
+	                    $linktitle = 'title="'.esc_attr($description).'"';
+	                }
+	                else if(strpos($html_tags[0], 'a href=') !== false)
+	                {
+	                    $linktitle = 'title="'.esc_attr($the_title).'"';
+	                }
+	                $markup = ($post_type == 'attachment') ? avia_markup_helper(array('context' => 'image_url','echo'=>false, 'id'=>$entry['ID'], 'custom_markup'=>$this->atts['custom_markup'])) : avia_markup_helper(array('context' => 'entry','echo'=>false, 'id'=>$entry['ID'], 'custom_markup'=>$this->atts['custom_markup']));
+
+					$items .= 	"<{$html_tags[0]} id='av-masonry-".self::$element."-item-".$entry['ID']."' data-av-masonry-item='".$entry['ID']."' class='{$class_string}' {$linktitle} {$markup}>";
+					$items .= 		"<div class='av-inner-masonry-sizer'></div>"; //responsible for the size
+					$items .=		"<figure class='av-inner-masonry main_color'>";
+					$items .= 			$bg;
+					
+					//title and excerpt
+					if($this->atts['caption_elements'] != 'none' || !empty($text_add))
 					{
-						if($auto)
-							$class_string .= $this->ratio_check_by_image_size($attachment);
+						$items .=	"<figcaption class='av-inner-masonry-content site-background'><div class='av-inner-masonry-content-pos'><div class='av-inner-masonry-content-pos-content'><div class='avia-arrow'></div>".$text_before;
+						
+						// dgamoni tag
+						$ipopi_homepage_tag = get_field('ipopi_homepage_tag',$entry['ID']);
+						$ipopi_homepage_tag_color = get_field('ipopi_homepage_tag_color',$entry['ID']);
+						if($ipopi_homepage_tag_color) {
+							$tag_color = "style='background-color:".$ipopi_homepage_tag_color.";'";
+						} else {
+							$tag_color = "";
+						}
+						if($ipopi_homepage_tag) {
+						  $items .= "<span class='ipopi_homepage_tag' ".$tag_color." ><span class='ipopi_homepage_tag_label'>".$ipopi_homepage_tag."</span></span>";
+						}
+
+						if(strpos($this->atts['caption_elements'], 'title') !== false){
+	                        $markup = avia_markup_helper(array('context' => 'entry_title','echo'=>false, 'id'=>$entry['ID'], 'custom_markup'=>$this->atts['custom_markup']));
+							$items .=	"<h3 class='ipopi_homepage-masonry-entry-title av-masonry-entry-title entry-title' {$markup}>{$the_title}</h3>";
+						}
+
+						//dgamoni
+						$ipopi_homepage_excerpt = get_field('ipopi_homepage_excerpt',$entry['ID']);
+						if($ipopi_homepage_excerpt) {
+							$items .=	"<div class='av-masonry-entry-content entry-content' >{$ipopi_homepage_excerpt}</div>";
+						}
+						else if(strpos($this->atts['caption_elements'], 'excerpt') !== false && !empty($content)){
+	                        $markup = avia_markup_helper(array('context' => 'entry_content','echo'=>false, 'id'=>$entry['ID'], 'custom_markup'=>$this->atts['custom_markup']));
+							$items .=	"<div class='av-masonry-entry-content entry-content' {$markup}>{$content}</div>";
+						}
+						$items .=	$text_after."</div><div class='av-inner-masonry-content-pos-content-bg'></div></div></figcaption>";
+					}
+					$items .= 		"</figure>";
+					$items .= 	"</{$html_tags[1]}><!--end av-masonry entry-->";
+
+				endif;
+
 							
-						if($manually)
-							$class_string .= $this->ratio_check_by_tag($entry['tags']);	
-					}
-				}
-				
-				$linktitle = "";
-				
-                if($post_type == 'attachment' && strpos($html_tags[0], 'a href=') !== false)
-                {
-                    $linktitle = 'title="'.esc_attr($description).'"';
-                }
-                else if(strpos($html_tags[0], 'a href=') !== false)
-                {
-                    $linktitle = 'title="'.esc_attr($the_title).'"';
-                }
-                $markup = ($post_type == 'attachment') ? avia_markup_helper(array('context' => 'image_url','echo'=>false, 'id'=>$entry['ID'], 'custom_markup'=>$this->atts['custom_markup'])) : avia_markup_helper(array('context' => 'entry','echo'=>false, 'id'=>$entry['ID'], 'custom_markup'=>$this->atts['custom_markup']));
-
-				$items .= 	"<{$html_tags[0]} id='av-masonry-".self::$element."-item-".$entry['ID']."' data-av-masonry-item='".$entry['ID']."' class='{$class_string}' {$linktitle} {$markup}>";
-				$items .= 		"<div class='av-inner-masonry-sizer'></div>"; //responsible for the size
-				$items .=		"<figure class='av-inner-masonry main_color'>";
-				$items .= 			$bg;
-				
-				//title and excerpt
-				if($this->atts['caption_elements'] != 'none' || !empty($text_add))
-				{
-					$items .=	"<figcaption class='av-inner-masonry-content site-background'><div class='av-inner-masonry-content-pos'><div class='av-inner-masonry-content-pos-content'><div class='avia-arrow'></div>".$text_before;
-					
-					// dgamoni tag
-					$ipopi_homepage_tag = get_field('ipopi_homepage_tag',$entry['ID']);
-					$ipopi_homepage_tag_color = get_field('ipopi_homepage_tag_color',$entry['ID']);
-					if($ipopi_homepage_tag_color) {
-						$tag_color = "style='background-color:".$ipopi_homepage_tag_color.";'";
-					} else {
-						$tag_color = "";
-					}
-					if($ipopi_homepage_tag) {
-					  $items .= "<span class='ipopi_homepage_tag' ".$tag_color." ><span class='ipopi_homepage_tag_label'>".$ipopi_homepage_tag."</span></span>";
-					}
-
-					if(strpos($this->atts['caption_elements'], 'title') !== false){
-                        $markup = avia_markup_helper(array('context' => 'entry_title','echo'=>false, 'id'=>$entry['ID'], 'custom_markup'=>$this->atts['custom_markup']));
-						$items .=	"<h3 class='av-masonry-entry-title entry-title' {$markup}>{$the_title}</h3>";
-					}
-
-					//dgamoni
-					$ipopi_homepage_excerpt = get_field('ipopi_homepage_excerpt',$entry['ID']);
-					if($ipopi_homepage_excerpt) {
-						$items .=	"<div class='av-masonry-entry-content entry-content' >{$ipopi_homepage_excerpt}</div>";
-					}
-					else if(strpos($this->atts['caption_elements'], 'excerpt') !== false && !empty($content)){
-                        $markup = avia_markup_helper(array('context' => 'entry_content','echo'=>false, 'id'=>$entry['ID'], 'custom_markup'=>$this->atts['custom_markup']));
-						$items .=	"<div class='av-masonry-entry-content entry-content' {$markup}>{$content}</div>";
-					}
-					$items .=	$text_after."</div><div class='av-inner-masonry-content-pos-content-bg'></div></div></figcaption>";
-				}
-				$items .= 		"</figure>";
-				$items .= 	"</{$html_tags[1]}><!--end av-masonry entry-->";					
-			}
+			} //end loop
 			
 			//if its an ajax call return the items only without container
 			if(isset($this->atts['action']) && $this->atts['action'] == 'avia_ajax_masonry_more')

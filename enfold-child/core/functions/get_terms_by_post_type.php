@@ -1,4 +1,4 @@
- <?php
+<?php
 /**
  * terms_clauses
  *

@@ -43,30 +43,34 @@ strong, .strong, .fett, .bold, .smallBold, .smallerBold { font-weight: bold; }
 }
 
 .ipopi-page-title {
-	font-size: 24px;
+	font-size: 30px;
 	color: black!important;
-	font-weight: 700;
+	font-weight: 800;
+}
+.ipopi-headline {
+	font-size: 36px;
+	color: black!important;
+	font-weight: 800;
 }
 .ipopi-calendar-title {
 	font-size: 26px;
 	color: black!important;
-	font-weight: 700;
+	font-weight: 800;
 }
-.ipopi-calendar-title:after {
+.ipopi-calendar-title:before {
     content:"";
     background: black;
-    position: absolute;
+    display: block;
     left: 0;
     height: 4px;
     width: 35px;
-	margin-top: -10px;
 }
 .ipopi-calendar-event {
 	font-size: 18px;
 	color: black!important;
 	font-weight: 700;
 }
-.ipopi-calendar-button {
+.ipopi-button {
 	color: #f99b48!important;
 	font-size: 16px;
     font-weight: bold;
@@ -75,4 +79,27 @@ strong, .strong, .fett, .bold, .smallBold, .smallerBold { font-weight: bold; }
     padding: 10px;
     border: 1px solid #f99b48!important;
     border-color: #f99b48!important;
+}
+a .ipopi-button:hover {
+	color: #fdc594!important;
+	font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+	text-align: center;
+    padding: 10px;
+    border: 1px solid #fdc594!important;
+    border-color: #fdc594!important;
+}
+.ipopi-picture-legend {
+	color:#b0b0b0; 
+	font-size:14px;
+	font-style: oblique;
+}
+.ipopi-text-link {
+	font-size:15px;
+	font-weight: 700;
+	color: #f99b48!important;
+}
+a .ipopi-text-link:hover {
+	text-decoration: underline!important;
 }

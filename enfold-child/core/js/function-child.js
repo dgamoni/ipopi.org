@@ -63,6 +63,9 @@ jQuery(document).ready(function($) {
                     $('#firms_list').html(a.content).css({
                         'opacity': '1'
                     });
+                    console.log(a.name);
+                    console.log(country);
+                    //google.maps.event.trigger(country.getPath(), 'click');
                 //}
             }
         });//end ajax
@@ -212,11 +215,38 @@ $.fn.avia_sc_toggle_ = function(options)
     });
 };
 
-jQuery( document ).ajaxComplete(function() {
-     jQuery('.togg').avia_sc_toggle_();
-});
+	$( document ).ajaxComplete(function() {
+        console.log('ajaxComplete');
+	     $('.togg').avia_sc_toggle_();
+        //collapse brand
+        $('.brand_wrap').hide();
+        $('.brand_wrap').each(function(index) {
+           $(this).css('height', $(this).height());
+        });
 
-jQuery('.toog_sort').avia_sc_toggle_();
+        $('.brand_title').click(function(e) {
+            e.preventDefault();
+            $(this).next('.brand_wrap').slideToggle();
+            $(this).toggleClass("brand_active");
+        });
+    });
+
+	$('.toog_sort').avia_sc_toggle_();
+
+
+    // customaze slider
+	$('.slideshow_align_caption').prepend('<span class="ipopi_homepage_tag" ><span class="ipopi_homepage_tag_label">news</span></span>');
+    $('#full_slider_1 .avia-slide-wrap').append('<div class="av-inner-masonry-content-pos-content-bg"></div>');
+
+    //collapse menu
+    $('#footer .widget_nav_menu .sub-menu').hide();
+    $('#footer .widget_nav_menu .menu-item-has-children a').click(function(e) {
+        e.preventDefault();
+        $(this).next('.sub-menu').slideToggle();
+    });
+
+
+
 
 }); //ready
 

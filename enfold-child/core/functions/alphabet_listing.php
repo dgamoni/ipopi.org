@@ -95,6 +95,8 @@ function generateAtoZHtml()	{
 										<img class='flags-img' src='".CORE_URL."/img/flags/".strtoupper($row->slug).".png'>
 										<span class='flags-title'>" . substr($row->name,0,20) . "</span>
 										<span class='flags-descript'>".get_office_title($row->term_taxonomy_id)."</span>
+										<span class='toggle_icon' >
+										</span>
 									</p>
 								";
 						$tempHtml .= "<div id='".($row->slug)."-container' class='toggle_wrap office-wrap '>".get_office_by_term($row->term_taxonomy_id)."</div>";
@@ -214,15 +216,15 @@ function get_office_by_term($term) {
 			}
 		$out_office .= '</div>';
 
-		$out_office .= '<div class="ipopi_organizations_column organizations_phone">';
-		$out_office .= '<h3>Phone</h3>';
-			if($ipopi_organizations_phone_1) {
-				$out_office .= '<p>'.$ipopi_organizations_phone_1.'</p>';
-			}
-			if($ipopi_organizations_phone_2) {
-				$out_office .= '<p>'.$ipopi_organizations_phone_2.'</p>';
-			}
-		$out_office .= '</div>';
+		//$out_office .= '<div class="ipopi_organizations_column organizations_phone">';
+		// $out_office .= '<h3>Phone</h3>';
+		// 	if($ipopi_organizations_phone_1) {
+		// 		$out_office .= '<p>'.$ipopi_organizations_phone_1.'</p>';
+		// 	}
+		// 	if($ipopi_organizations_phone_2) {
+		// 		$out_office .= '<p>'.$ipopi_organizations_phone_2.'</p>';
+		// 	}
+		//$out_office .= '</div>';
 
 		$out_office .= '<div class="ipopi_organizations_column organizations_email">';
 		$out_office .= '<h3>Email/Website</h3>';
@@ -235,9 +237,22 @@ function get_office_by_term($term) {
 			if($ipopi_organizations_website) {
 				$out_office .= '<p><a href="http://'.$ipopi_organizations_website.'" target="_blank">'.$ipopi_organizations_website.'</a></p>';
 			}
+		if($ipopi_organizations_phone_1 || $ipopi_organizations_phone_2) {
+			$out_office .= '<h3 class="phone_title">Phone</h3>';
+		}
+			if($ipopi_organizations_phone_1) {
+				$out_office .= '<p>'.$ipopi_organizations_phone_1.'</p>';
+			}
+			if($ipopi_organizations_phone_2) {
+				$out_office .= '<p>'.$ipopi_organizations_phone_2.'</p>';
+			}
+
 		$out_office .= '</div>';
+		
+
 
 	}
+
 	wp_reset_postdata();
 
 	return $out_office;

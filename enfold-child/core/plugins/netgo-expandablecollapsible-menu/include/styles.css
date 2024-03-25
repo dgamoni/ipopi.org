@@ -1,0 +1,105 @@
+div.netgo_navigation {
+	     border-top: 1px solid #ccc; 
+     margin-bottom: 20px; 
+}
+div.netgo_navigation ul,
+#main .widget-area div.netgo_navigation ul 
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+
+}
+div.netgo_navigation li {
+	margin: 0;
+	/*padding: 0 0 0 15px;*/
+}
+
+div.netgo_navigation li.page-has-children {
+	/*background: url(arrow-right.gif) no-repeat -3px 0px;*/
+	/*padding: 0 0 0 15px;*/
+	cursor: pointer;
+}
+
+div.netgo_navigation li.menu-item-has-children,
+div.netgo_navigation ul:first-child >  li {
+	cursor: pointer;
+    padding: 23px 0;
+    border-bottom: 1px solid #ccc;
+}
+div.netgo_navigation ul:first-child >  li > a {
+	cursor: pointer;
+	font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+	padding-right: 15px;
+}
+
+div.netgo_navigation li.menu-item-has-children >  a {
+	cursor: pointer;
+	font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+	padding-right: 15px;
+}
+div.netgo_navigation li.menu-item-has-children:before {
+	    content: "\e409";
+    font-family: 'galibelle-icon';
+    transform: rotate(90deg);
+    display: block;
+    position: absolute;
+    right: 36px;
+    color: #ff7900;
+    font-size: 18px;
+    line-height: 23px;
+}
+div.netgo_navigation li.menu-item-has-children.current_arrow:before {
+	transform: rotate(270deg);
+}
+
+div.netgo_navigation ul ul li {
+	/*padding-left: 5px;*/
+}
+
+div.netgo_navigation li.current_page_ancestor:before,
+div.netgo_navigation li.current_page_parent:before,
+div.netgo_navigation li.netgo-navigation-selected:before,
+div.netgo_navigation li.current_page_item.page-has-children:before
+ {
+    content: "\e409";
+    font-family: 'galibelle-icon';
+    transform: rotate(90deg);
+    display: block;
+    position: absolute;
+    right: 36px;
+    color: #ff7900;
+    font-size: 18px;
+    line-height: 23px;
+}
+
+
+div.netgo_navigation li.netgo-navigation-deselected {
+	/*background-image: url(arrow-right.gif) !important;*/
+}
+
+
+
+
+
+div.netgo_navigation li.current_page_item li {
+	font-weight: normal;
+}
+div.netgo_navigation  ul.sub-menu {
+	    margin-top: 20px;
+}
+div.netgo_navigation  ul.sub-menu li a {
+	color: #010101;
+	font-size: 13px;
+	font-family: 'GothamRounded-Medium';
+}
+div.netgo_navigation  ul.sub-menu li  {
+	padding: 10px 0;
+}
+div.netgo_navigation  ul.sub-menu li.current_page_item a   {
+	color: #808080;
+}

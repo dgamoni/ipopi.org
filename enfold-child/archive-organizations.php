@@ -32,6 +32,12 @@
 
 				<main class='content av-content-full alpha units' <?php avia_markup_helper(array('context' => 'content','post_type'=>'post'));?>>
 					
+					<div class="organizations_header">
+						<h1>Member organizations</h1>
+							<p>IPOPI’s National Member Organisations (NMOs), national patient groups that represent the interests of primary immunodeficiencies patients, are the reason for IPOPI’s existence.</p>
+							<p>IPOPI recognises as one group from each country.</p>
+					</div>
+
 					<div id="toog_sort" class="toog_sort"><?php echo generateAtoZHtml(); ?></div>
 
 				</main>
