@@ -211,6 +211,112 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007d7e7d', e
     top: 75%;
  }
 
+/* footer*/
+.contact-button {
+
+}
+.footer_color a.contact-button {
+	color: #f99b48;
+	font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    padding: 20px 60px;
+    border: 1px solid #f99b48;
+    border-color: #f99b48;
+}
+.footer_color a.contact-button:hover {
+
+}
+.footer_color h3 {
+	font-size: 26px;
+    font-weight: 900;
+}
+.footer_color p {
+	font-size: 15px;
+}
+.flags:before {
+  position:relative; /*or absolute*/
+  z-index:100000; /*a number that's more than the modal box*/
+	left: -20px;
+    top: 37px;
+    display: inline-block;
+    height: 100px;
+}
+/*.AR:before {
+  content:url('core/img/flags/AR.png'); 
+}*/
+
+/*filter*/
+#filters {
+	    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+#filters a {
+	color: #808080;
+	font-weight: 600;
+}
+#filters a.is-checked {
+	color: #f99b48;
+}
+#filters a.true {
+	color: black;
+}
+.flag-wrap {
+	    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+}
+.flags {
+	min-height: 100px;
+	    display: flex;
+    flex-flow: row wrap;
+    align-items: baseline;
+}
+.flags a {
+	color: black;
+    font-size: 16px;
+    font-weight: 600;
+        display: block;
+        line-height: 1;
+}
+.flags span {
+	font-style: italic;
+}
+.office-wrap {
+/*	display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: stretch;*/
+    margin-left: 60px;
+    margin-top: 50px;
+}
+.ipopi_organizations_column {
+	width: 250px;
+	float:left;
+}
+.ipopi_organizations_column h3 {
+
+}
+.ipopi_organizations_column p {
+	    margin: 0;
+}
+.myhide {
+	display: none;
+}
+#filters a.letter_true {
+    color: black;
+}
+#filters a.letter_true.is-checked {
+    color: #f99b48;
+}
+
+#wp-alphabet-listing {
+	/*height: auto !important;*/
+}
+
 @media only screen and (max-width: 1116px) {
     .menu_wrap {
 
@@ -233,9 +339,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007d7e7d', e
         display: none;
     }
     .headersearch  {
-        /*display: none;*/
-        top: 97px !important;
-        right: 75px;
+        display: none;
+/*        top: 97px !important;
+        right: 75px;*/
     }
 /*    .mobilheadersearch.headersearch {
         display: block;
@@ -245,7 +351,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007d7e7d', e
     }
 }
 @media only screen and (max-width: 767px) {
-
+	.preheader {
+		display: none;
+	}
+	#advanced_menu_toggle {
+	    right: 0;
+	    top: 50%;
+	}
 }
 @media only screen and (max-width: 480px) {
 
