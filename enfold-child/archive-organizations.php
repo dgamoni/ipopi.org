@@ -32,7 +32,7 @@
 
 				<main class='content av-content-full alpha units' <?php avia_markup_helper(array('context' => 'content','post_type'=>'post'));?>>
 					
-					<?php echo generateAtoZHtml(); ?>
+					<div id="toog_sort" class="toog_sort"><?php echo generateAtoZHtml(); ?></div>
 
 				</main>
 

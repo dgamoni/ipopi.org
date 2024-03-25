@@ -27,34 +27,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-// Register the "Country" taxonomy
 
-function wp_cc_tax_custom_taxonomy() {
-
-  // Define labels in an array
-
-  $labels = array(
-    'name'                => _x( 'Country', 'taxonomy general name' ),
-    'singular_name'       => _x( 'Countries', 'taxonomy singular name' ),
-    'search_items'        =>  __( 'Search Countries' ),
-    'all_items'           => __( 'All Countries' ),
-    'edit_item'           => __( 'Edit Country' ),
-    'update_item'         => __( 'Update Country' ),
-    'add_new_item'        => __( 'Add New Country' ),
-    'new_item_name'       => __( 'New Country Name' ),
-    'menu_name'           => __( 'Countries' ),
-  );
-
-  register_taxonomy( 'country', array( 'organizations' ), array(
-    'hierarchical'=> true,
-    'labels'      => $labels,
-    'show_ui'     => true,
-    'query_var'   => true,
-    'rewrite'     => array( 'slug'   => 'country' ),
-  ));
-}
-
-add_action( 'init', 'wp_cc_tax_custom_taxonomy');
 
 // Set default terms for the custom taxonomies
 

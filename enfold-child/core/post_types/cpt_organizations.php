@@ -47,9 +47,10 @@ function custom_post_type_organization() {
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,
 		'has_archive'           => true,		
-		'exclude_from_search'   => false,
+		'exclude_from_search'   => true,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
+		'menu_icon'           	=> 'dashicons-groups'
 	);
 	register_post_type( 'organizations', $args );
 
@@ -57,3 +58,53 @@ function custom_post_type_organization() {
 add_action( 'init', 'custom_post_type_organization', 0 );
 
 } 
+
+
+	function manage_organizations_columns( $column_name, $id ) {
+
+		global $wpdb, $pageURLs;
+
+		$diplom = get_post( $id );
+		$user   = get_userdata( $diplom->post_author );
+
+		switch ( $column_name ) {
+			case 'id':
+				echo $id;
+				break;
+
+			case 'country':
+					$terms = get_the_terms($id, 'country');
+					foreach($terms as $term)
+					    echo ' '.$term->name. ' ';
+				break;
+
+
+			default:
+				break;
+		} // end switch
+	}
+
+	function add_organizations_columns( $columns ) {
+
+		global $pageURLs;
+		$new_columns['cb']               = '<input type="checkbox" />';
+		$new_columns['title']            = _x( 'Title', 'column name' );
+		$new_columns['country'] = _x( 'Country', 'country' );
+		$new_columns['date']             = _x( 'Date', 'column name' );
+		return $new_columns;
+	}
+	add_filter( 'manage_edit-organizations_columns', 'add_organizations_columns' );
+	add_action( 'manage_organizations_posts_custom_column', 'manage_organizations_columns', 10, 2 );
+
+
+
+		// Make these columns sortable
+	function sortable_columns_organizations() {
+	  return array(
+	  	'title'     => 'title',
+	  	'country'     => 'country',
+	    'date' => 'date'
+	  );
+	}
+
+	add_filter( "manage_edit-organizations_sortable_columns", "sortable_columns_organizations" );

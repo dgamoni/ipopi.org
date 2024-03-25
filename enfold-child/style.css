@@ -9,6 +9,10 @@ Template: enfold
 
 
 /*header*/
+.logo img{
+    width: 126px;
+    padding-top: 15px;
+}
 /*.preheader {
 	clear: none;
     position: absolute;
@@ -177,6 +181,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007d7e7d', e
     font-size: 16px;
     padding: 2px 8px;
     text-transform: uppercase;
+	background: none;
+    clip-path: polygon(100% 0, 100% 75%, 85% 100%, 0 100%, 0 0);
 }
 .ipopi_homepage_tag_label {
 
@@ -186,15 +192,71 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007d7e7d', e
 }
 .av-inner-masonry-content-pos-content {
     padding: 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.av-inner-masonry-content-pos-content-bg {
+
+        -webkit-transition: max-height .5s;
+        transition: max-height .5s;
+        /*transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);*/
+        max-height: 0;
+
+
+-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1); 
+-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); 
+   -moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); 
+     -o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); 
+        transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+
+         /* easeOutBack */
 }
 .av-inner-masonry-content-pos:hover .av-inner-masonry-content-pos-content {
+    /*background-color: white;*/
+/*    transition-property: background-color;
+    transition-duration: 1s, 1s;*/
+   /* transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);*/
+    
+
+
+
+   /* padding-right: 60px;*/
+
+  /*  max-height: 160px;*/
+
+}
+.av-inner-masonry-content-pos:hover .av-inner-masonry-content-pos-content-bg {
     background-color: white;
-     transition-property: background-color;
-    transition-duration: 1s, 1s;
-    padding-right: 60px;
+    max-height: 160px;
+    height: 160px;
+}
+
+
+.av-inner-masonry-content-pos-content:before {
+    -webkit-transition: right .5s;
+    transition: right .5s;
+    right: -40; 
+    -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1); 
+    -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); 
+    -moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); 
+    -o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); 
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); 
 }
 .av-inner-masonry-content-pos:hover .av-inner-masonry-content-pos-content:before {
-
+    position: absolute;
+    color: black;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    right: 0;
+    top: 0;
+    z-index: 500;
+    text-align: center;
+    content: "\E879";
+    font-family: 'entypo-fontello';
+    font-size: 33px;
+    font-weight: normal;
 }
 #top .av-caption-style-overlay .av-masonry-item-with-image .av-inner-masonry-content .av-inner-masonry-content-pos:hover .av-masonry-entry-title,
 #top .av-caption-style-overlay .av-masonry-item-with-image .av-inner-masonry-content .av-inner-masonry-content-pos:hover .av-masonry-entry-content {
@@ -221,7 +283,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007d7e7d', e
     font-weight: bold;
     display: inline-block;
     text-align: center;
-    padding: 20px 60px;
+    padding: 10px 40px;
     border: 1px solid #f99b48;
     border-color: #f99b48;
 }
@@ -275,23 +337,43 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007d7e7d', e
     flex-flow: row wrap;
     align-items: baseline;
 }
-.flags a {
+/*.flags a {
 	color: black;
     font-size: 16px;
     font-weight: 600;
         display: block;
         line-height: 1;
+}*/
+.flags-img {
+    float: left;
+    margin-right: 10px;
 }
-.flags span {
+.flags-title {
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+        display: block;
+        line-height: 1;
+            margin-top: 14px;
+}
+.js_active .toggler.flags {
+    padding: 9px 3px 9px 0px;
+}
+.flags-descript {
+    font-style: italic;
+}
+/*.flags span {
 	font-style: italic;
-}
+}*/
 .office-wrap {
 /*	display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: stretch;*/
-    margin-left: 60px;
-    margin-top: 50px;
+/*    margin-left: 60px;
+    margin-top: 50px;*/
+        margin-left: 100px;
+    margin-top: 10px;
 }
 .ipopi_organizations_column {
 	width: 250px;
@@ -315,6 +397,64 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007d7e7d', e
 
 #wp-alphabet-listing {
 	/*height: auto !important;*/
+}
+
+/* Team */
+.team-img-container {
+float: left;
+padding-right: 10px;
+}
+.team-member-name {
+	font-size: 16px;
+}
+.team-member-job-title {
+	opacity: 1!important;
+	color: #000000!important;
+	font-weight: 700!important;
+}
+.team-member-description {
+	font-size: 13px;
+}
+
+/*product*/
+.pid-product_wrap {
+    padding-left: 30px;
+}
+.toggle_content.pid-product_wrap {
+    padding: 12px 30px 11px 30px;
+    margin: 0px 0 5px 0;
+    border:none;
+/*    border-style: solid;
+    border-width: 1px;
+    border-top: none;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;*/
+    overflow: hidden;
+}
+.main_color .toggle_content.pid-product_wrap {
+        background: inherit;
+    }
+
+.page-template-pid-map-template .main_color .toggler,
+.page-template-pid-map-template .main_color .toggler:hover {
+    background: inherit;
+    text-decoration: underline;
+    color: #f99b48;
+    border: none;
+}
+.page-template-pid-map-template .main_color .toggler.activeTitle,
+.page-template-pid-map-template .main_color .toggler.activeTitle:hover {
+    background-color: #f99b48;
+    color: white;
+}
+.page-template-pid-map-template .main_color strong {
+    color: black;
+}
+
+.post-type-archive-organizations .main_color .toggler,
+.post-type-archive-organizations .main_color .toggler:hover {
+    background: inherit;
+    border: none;
 }
 
 @media only screen and (max-width: 1116px) {
@@ -358,7 +498,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007d7e7d', e
 	    right: 0;
 	    top: 50%;
 	}
+    .responsive .logo img {
+        padding: 5px;
+    }
 }
 @media only screen and (max-width: 480px) {
 
+}
+.av-magazine-entry {
+	background: white;
+	padding: 10px;
+    border: #e1e1e1 1px solid;
+}
+.av-magazine-content-wrap {
+    border-bottom: none;
+}
+.widgettitle {
+	font-size: 22px!important;
+	text-transform: none;
 }

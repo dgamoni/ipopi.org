@@ -338,7 +338,7 @@ if ( !class_exists( 'avia_masonry' ) )
                         $markup = avia_markup_helper(array('context' => 'entry_content','echo'=>false, 'id'=>$entry['ID'], 'custom_markup'=>$this->atts['custom_markup']));
 						$items .=	"<div class='av-masonry-entry-content entry-content' {$markup}>{$content}</div>";
 					}
-					$items .=	$text_after."</div></div></figcaption>";
+					$items .=	$text_after."</div><div class='av-inner-masonry-content-pos-content-bg'></div></div></figcaption>";
 				}
 				$items .= 		"</figure>";
 				$items .= 	"</{$html_tags[1]}><!--end av-masonry entry-->";					
