@@ -8,5 +8,245 @@ Template: enfold
 */
 
 
+/*header*/
+/*.preheader {
+	clear: none;
+    position: absolute;
+    z-index: 100;
+    line-height: 30px;
+    height: 50%;
+    margin: 0;
+    right: 0;
+    left: 26%;
+    top: 20px;
+}*/
+.preheader {
+    position: relative;
+    z-index: 100;
+    height: 50%;
+    top: 20px;
+    margin-left: 130px;
+    float: right;
+}
+/*.main_menu {
+    clear: none;
+    position: relative;
+    z-index: 100;
+    line-height: 30px;
+    height: 50%;
+    margin: 0;
+    top: 100px;
+    left: 25%;
+    width: 50%;
+}*/
+.main_menu {
+    position: relative;
+    z-index: 100;
+    line-height: 30px;
+    height: 50%;
+    margin: 0;
+    /*top: 100px;*/
+    float: left;
+}
+.blog-description {
+	text-transform: uppercase;
+	font-weight: 900;
+	color:#308bbe;
+}
+.header_color h3.blog-description {
+	color:#308bbe;
+    padding-top: 28px;
+    margin-right: 375px;
+}
+.headersearch {
 
-/*Add your own styles here:*/
+}
+.headersearch.avia-search-tooltip {
+    position: absolute;
+    right: 0;
+    top: 0 !important;
+    box-shadow: none; 
+    border: none; 
+}
+
+#top #header_main > .container .ipopimainmenu.main_menu ul:first-child > li > a {
+    height: 100px;
+    line-height: 100px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+}
+/*.ipopimainmenu_sub {
+	clear: none;
+    position: absolute;
+    z-index: 100;
+    line-height: 30px;
+    height: 50%;
+    margin: 0;
+    right: 0;
+    top: 100px;
+}*/
+.ipopimainmenu_sub {
+    position: relative;
+    height: 50%;
+    /*top: 100px;*/
+    float: left;
+    margin-left: 8px;
+}
+.sub_menu {
+    top: 0;
+}
+.menu_wrap {
+    margin-left: 130px;
+    float: right;
+}
+.ipopimainmenu_sub.sub_menu>ul>li>a {
+    height: 100px;
+    line-height: 100px;
+    font-size: 16px;
+    font-weight: 100;
+}
+.ipopimainmenu_sub.sub_menu li {
+    border-right: none;
+}
+.custom_placeholder::placeholder {
+    font-style: italic;
+}
+div .header_color .button, .header_color #submit.ipopisubmit, .header_color .ipopisubmit input[type='submit'] {
+    background-color: transparent;
+    color: #f99b48;
+    /*border-color: #d77926;*/
+    border: none;
+}
+
+.headersearch.avia-search-tooltip {
+    width: 330px;
+}
+
+
+/*slider*/
+.avia-fullwidth-slider .avia-slideshow-arrows {
+    display: none;
+}
+.avia-slideshow-dots {
+    text-align: right;
+    max-width: 1200px;
+    bottom: 30px;
+}
+.caption_bottom .slideshow_caption .slideshow_inner_caption {
+    max-width: 855px;
+}
+
+/*masonary*/
+#top .av-fixed-size .av-masonry-entry.av-masonry-item-no-image .av-inner-masonry-content-pos, #top .av-caption-style-overlay .av-masonry-item-with-image .av-inner-masonry-content-pos {
+    vertical-align: bottom;
+    text-align: left;
+   /* padding: 20px;*/
+}
+.avia_desktop .av-masonry-entry:hover .av-masonry-image-container {
+    -webkit-transform: scale(1,1);
+    transform: scale(1,1);
+}
+#top .av-caption-style-overlay .av-masonry-item-with-image .av-inner-masonry-content {
+    /*background: rgba(0,0,0,0.35);*/
+    /*background: transparent;*/
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7d7e7d+53,0e0e0e+100&0+43,1+100 */
+background: -moz-linear-gradient(top, rgba(125,126,125,0) 43%, rgba(125,126,125,0.18) 53%, rgba(14,14,14,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(125,126,125,0) 43%,rgba(125,126,125,0.18) 53%,rgba(14,14,14,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(125,126,125,0) 43%,rgba(125,126,125,0.18) 53%,rgba(14,14,14,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+}
+#top .isotope-item {
+    max-height: 327px;
+}
+.home .child-av-masonry {
+    margin-top: -30px;
+}
+#top .av-caption-style-overlay .av-masonry-entry .av-masonry-entry-title {
+    font-size: 36px;
+    font-weight: 800;
+}
+.av-masonry-date, .av-masonry-text-sep, .av-masonry-author {
+    display: none;
+}
+.av-masonry-entry .av-masonry-entry-title + .av-masonry-entry-content {
+    font-size: 16px;
+}
+.ipopi_homepage_tag {
+    font-size: 16px;
+    font-size: 16px;
+    padding: 2px 8px;
+    text-transform: uppercase;
+}
+.ipopi_homepage_tag_label {
+
+}
+.av-masonry-entry .av-inner-masonry-content {
+    padding: 0;
+}
+.av-inner-masonry-content-pos-content {
+    padding: 20px;
+}
+.av-inner-masonry-content-pos:hover .av-inner-masonry-content-pos-content {
+    background-color: white;
+     transition-property: background-color;
+    transition-duration: 1s, 1s;
+    padding-right: 60px;
+}
+.av-inner-masonry-content-pos:hover .av-inner-masonry-content-pos-content:before {
+
+}
+#top .av-caption-style-overlay .av-masonry-item-with-image .av-inner-masonry-content .av-inner-masonry-content-pos:hover .av-masonry-entry-title,
+#top .av-caption-style-overlay .av-masonry-item-with-image .av-inner-masonry-content .av-inner-masonry-content-pos:hover .av-masonry-entry-content {
+    color: black;
+}
+.av-inner-masonry:hover .av-masonry-outerimage-container{
+    opacity: 0.5;
+    transition-property: opacity;
+    transition-duration: 1s, 1s; 
+}
+
+#advanced_menu_toggle {
+    right: 18px;
+    top: 75%;
+ }
+
+@media only screen and (max-width: 1116px) {
+    .menu_wrap {
+
+    }
+    #top #header_main > .container .ipopimainmenu.main_menu ul:first-child > li > a {
+        font-size: 90%;
+    }
+    .ipopimainmenu_sub.sub_menu>ul>li>a {
+        font-size: 90%;
+    }
+    .header_color h3.blog-description {
+        margin-left: 13%;
+    }
+}
+@media only screen and (max-width: 989px) {
+    .ipopimainmenu_sub {
+        display: none;
+    }
+    #menu-dot {
+        display: none;
+    }
+    .headersearch  {
+        /*display: none;*/
+        top: 97px !important;
+        right: 75px;
+    }
+/*    .mobilheadersearch.headersearch {
+        display: block;
+    }*/
+    .header_color h3.blog-description {
+        margin: 0;
+    }
+}
+@media only screen and (max-width: 767px) {
+
+}
+@media only screen and (max-width: 480px) {
+
+}
