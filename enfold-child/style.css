@@ -127,6 +127,9 @@ blockquote p:before {
     font-weight: 600;
     color: #000;
 }
+#top #header_main > .container .ipopimainmenu.main_menu ul:first-child > li.second_menu_element > a {
+    color: #808080;
+}
 .ipopimainmenu ul li ul li span {
     font-size: 16px;
     color: black;
@@ -407,7 +410,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007d7e7d', e
 }
 .av-inner-masonry-content-pos:hover .av-inner-masonry-content-pos-content-bg {
     background-color: white;
-    max-height: 175px;
+    /*max-height: 175px;*/
+    max-height: 275px;
     height: 175px;
 }
 
@@ -508,6 +512,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007d7e7d', e
 }
 #filters a.true {
 	color: black;
+}
+.button_ver2 {
+        width: 100%;
+    margin-top: 15px;
+}
+#filters .button_ver2 a {
+    /*color: #dedede;*/
+    font-weight: 600;
+    font-size: 20px;
+}
+#filters .button_ver2 a.activeFilter {
+        color: #f99b48;
+}
+#filters .button_ver2 span {
+    font-size: 17px;
+    vertical-align: text-bottom;
 }
 .flag-wrap {
 	    display: flex;
@@ -992,6 +1012,7 @@ blockquote h2:before {
 #mobile-advanced.mobile-advanced1 .mega_menu_title {
     font-weight: 800;
     font-size: 110%;
+        color: #444;
 }
 
 #bmt {
@@ -1189,14 +1210,18 @@ blockquote h2:before {
         padding: 5px;
     }
     .responsive .av-masonry-entry .av-masonry-entry-title+.av-masonry-entry-content {
-       /* display: none;*/
+        /* display: none; */
     }
     #top .av-caption-style-overlay .av-masonry-entry .av-masonry-entry-title {
         /*font-size: 19px;*/
     }
-        #map-wrap {
-        display: none;
+    #top .av-caption-style-overlay .av-masonry-entry .av-masonry-entry-title {
+        font-size: 24px;
     }
+/*         #map-wrap {
+display: none;
+    } */
+
     .choose_by_country {
          padding: 0px; 
     }
@@ -1208,6 +1233,9 @@ blockquote h2:before {
     }
 }
 @media only screen and (max-width: 480px) {
+    .responsive .av-masonry-entry .av-masonry-entry-title+.av-masonry-entry-content {
+        display: none;
+    }
 /*    .responsive #top .slideshow_caption .avia-caption-content {
         display: none;
     }*/
@@ -1245,7 +1273,7 @@ blockquote h2:before {
 
 
     #top .av-caption-style-overlay .av-masonry-entry .av-masonry-entry-title {
-        font-size: 26px;
+        font-size: 24px;
     }
 /*    .responsive #top .slideshow_caption .avia-caption-content {
         font-size: 11px !important;
@@ -1260,9 +1288,9 @@ blockquote h2:before {
 
 }
 .av-magazine-entry {
-	background: white;
+	/*background: white;*/
 	padding: 10px;
-    border: #e1e1e1 1px solid;
+    /*border: #e1e1e1 1px solid;*/
 }
 .av-magazine-content-wrap {
     border-bottom: none;
@@ -1364,8 +1392,9 @@ display: none;
 
 /* pids faq page accordion */
 .main_color .toggler:hover {
-color: white;
+/*color: white;*/
 background: #f99b48;
+color: #444;
 }
 
 /* mailchimp alert subscription box */
@@ -1381,15 +1410,77 @@ background: #f99b48;
 	font-weight: bold;
 }
 
-/* bell corner notification */
-#fixedbutton {
-    position: fixed;
-    bottom: 20px;
-    left: 20px; 
-	z-index: 999;
-}
-#fixedbutton img {
-	max-width: 75px:
-}
 
 
+/* ======================================================================================================================================================
+Magazine
+====================================================================================================================================================== */
+
+.av-magazine{clear:both;  overflow: hidden; margin-bottom:30px;  -webkit-perspective: 1000px; -webkit-backface-visibility: hidden;}
+.av-magazine-group{clear:both; position: relative; overflow: hidden; }
+.av-magazine-group.av-hidden-mag{display:none;}
+.av-magazine-entry{
+    min-height: 140px;
+    clear:both; position: relative; margin-bottom: 10px;}
+.av-magazine-thumbnail{float:left; margin-right:15px; 
+    width:149px;
+    min-height:61px; border:1px solid; padding:5px; display: block; text-align: center; position: relative;}
+.av-magazine-thumbnail-link{overflow: hidden; display: block;}
+.av-magazine-thumbnail img{ display:block; margin:0 auto; }
+.av-magazine .av-magazine-no-thumb .av-magazine-content-wrap{ min-height: 0px; }
+.av-magazine .av-magazine-no-thumb .av-magazine-content-wrap .av-magazine-title{padding-bottom:10px;}
+.av-magazine .av-magazine-entry-icon{font-size: 20px; position: absolute; top: 5px; left: 5px; right: 5px; bottom: 5px; line-height: 51px;}
+.av-magazine .av-magazine-entry-icon:hover{text-decoration: none;}
+
+.av-magazine-content-wrap{overflow: hidden; 
+    /*border-bottom:1px solid;*/ 
+    min-height: 61px;}
+.av-magazine header{position: relative;}
+.av-magazine-time, .av-magazine-author, .av-magazine-text-sep{font-size: 12px; text-transform: uppercase;}
+.av-magazine-text-sep{padding: 0 5px;}
+.av-magazine-text-sep, .av-magazine-author{ display: none; }
+.av-magazine .av-magazine-content-wrap .av-magazine-title{
+    font-size: 16px;
+    line-height: 1.3em;
+    text-transform: none;
+    letter-spacing: normal;
+    padding: 0;
+    margin: 0;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.av-magazine-hero .av-magazine-thumbnail{margin:0 0 8px 0; float:none; width:100%; border-radius: 2px; padding:7px;}
+.av-magazine-hero .av-magazine-content-wrap{ padding-bottom: 10px;}
+.av-magazine-hero-left .av-magazine-hero .av-magazine-content-wrap{border:none; margin-bottom:0px; padding-bottom: 0px;}
+.av-magazine-hero .av-magazine-content{margin-top:10px;}
+
+.av-magazine .av-magazine-sideshow.av_one_half{margin-left:3%; padding-left: 3%; width:50%; border-left-width:1px; border-left-style:  solid;}
+
+.av-magazine-top-bar{line-height: 30px; overflow: hidden; border-bottom-width:1px; border-bottom-style: solid; margin-bottom:10px;}
+.av-magazine-hero-left .av-magazine-top-bar{margin-bottom:0px; }
+.av-magazine-hero-top .av-magazine-top-bar{margin-bottom:0px; border:none; }
+.av-magazine-hero-left.av-magazine-top-bar-active .flex_column{padding-top:20px;}
+.av-magazine-top-heading{font-size: 15px; font-weight: bold; text-transform: uppercase; float: left; }
+.av-magazine-sort{float:right; font-size: 12px;}
+
+
+#top .av-magazine .avia-inherit-font-color a.av-magazine-top-heading,
+#top .av-magazine .avia-inherit-font-color a.active_sort,
+#top .av-magazine .avia-inherit-font-color a:hover{color: inherit;}
+
+.av-magazine-content {
+    line-height: 20px;
+    border:none;
+}
+
+@media only screen and (max-width: 767px)
+{
+    .responsive #top #wrap_all .av-magazine .flex_column{
+        margin: 0px;
+        padding-left: 0px;
+        width:100%;
+        border:none;
+    }
+}

@@ -32,6 +32,8 @@ foreach ($dirs as $dir) {
 
 //plugins
 require_once CORE_PLUGINS_PATH. 'init.php';
+//lib
+require_once CORE_PATH.'/lib/BFI_Thumb.php';
 
 add_filter('avia_load_shortcodes', 'avia_include_shortcode_template', 15, 1);
 function avia_include_shortcode_template($paths) {
@@ -99,11 +101,125 @@ function add_custom_css() {
     global $current_user;
     ?>
     <script>
+        jQuery(window).load(function() {
+             //console.log("window load occurred!");
+                var isRunning_ = false;
+                var interval_start = setInterval(function() {
+                    if(!isRunning_) {
+                         $( ".bell" ).addClass('start');
+                        isRunning_ = true;
+                        //console.log("load 500");
+                    }
+                }, 5000);
+                
+            var isRunning = true;
+            var x = 600;
+            var interval = setInterval(function() {
+                if (!isRunning) {
+                    $( ".bell" ).removeClass('run');
+                    //x = x-0.0003;
+                    isRunning = true;
+                } else {
+                    //$( ".bell" ).addClass('run');
+                    //isRunning = false;
+                    //x = x+0.0003;
+                }
+            }, x);
+   
+            var interval = setInterval(function() {
+                if (!isRunning) {
+                    //$( ".bell" ).removeClass('run');
+                    //x = x-0.0003;
+                    //isRunning = true;
+                } else {
+                    $( ".bell" ).addClass('run');
+                    isRunning = false;
+                    //console.log('run');
+                    //x = x+0.0003;
+                }
+            }, 15000); 
+            
+            
+        });
+        
         jQuery(document).ready(function($) {
+            
+            $(".av-inner-masonry-content-pos-content-bg").each(function(index, el) {
+
+                var elem = $(el).siblings(".av-inner-masonry-content-pos-content").find('.ipopi_homepage-masonry-entry-title').height();
+                //console.log(elem);
+                if ( elem === 138){
+    
+                    $(el).addClass('trans');
+
+                }
+    
+            });
+
+            
+
 
         });
     </script>
     <style>
+
+
+
+        .av-inner-masonry-content-pos:hover .av-inner-masonry-content-pos-content-bg.trans {
+            background-color: white;
+            max-height: 275px;
+            height: 275px;
+        }
+
+        #mobile-advanced #menu-dot {
+            display: none;
+        }
+        #mobile-advanced .av-burger-menu-main {
+            display: none;
+        }
+        #mobile-advanced .second_menu_element {
+
+        }
+        #mobile-advanced .second_menu_element a {
+            color: #808080;
+            font-weight: 600;
+            font-size: 110%;            
+        }        
+        #mobile-advanced .second_menu_element ul {
+            
+        }
+        #mobile-advanced .second_menu_element ul li {
+            
+        }
+        #mobile-advanced .second_menu_element ul li a {
+            color: white;            
+        }
+
+        #mobile-advanced .second_menu_element ul li a span {
+            display: inline-block;
+            border-bottom: 1px solid white;
+            padding: 0 10px 13px 10px;     
+        }
+    .bell {
+width: 60px;
+height: 59px;
+background: url('https://ipopi.org/wp-content/uploads/2018/02/ipopi-newsletter-alert.png') left center;
+/* animation: play 0.6s steps(19); */
+animation: none;
+}
+    .start {
+        animation: play 0.6s steps(19);
+        }
+    .run {
+        animation: play 0.6s steps(19) infinite;
+        }
+    .pause {
+        -webkit-animation-play-state: paused !important; 
+        -moz-animation-play-state: paused !important; 
+        -o-animation-play-state: paused !important;
+        animation-play-state: paused !important;
+   } 
+    
     #top .ipopimainmenu_sub.sub_menu li ul li ul.sub-menu {
         left: 169px;
         top: 0px;

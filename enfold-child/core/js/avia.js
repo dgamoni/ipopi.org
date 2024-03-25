@@ -471,9 +471,9 @@
     function avia_responsive_menu()
     {
     	var $html = $('html'), win = $(window), header = $('.responsive #header');
-    	console.log('avia_responsive_menu');
+    	//console.log('avia_responsive_menu');
     	if(!header.length) return;
-    	console.log('run');
+    	//console.log('run');
     	//dgamoni fix mobil menu
 		var menu1 			  	= header.find('.main_menu ul:eq(0)');
 		//console.log(menu1);
@@ -483,8 +483,12 @@
 		//console.log(menu_23);
 		var mobile_advanced1 	= menu1.clone().attr({id:"mobile-advanced", "class":"mobile-advanced1"});
 		var mobile_advanced2 	= menu2.clone().attr({id:"mobile-advanced", "class":"mobile-advanced2"});
-		var mobile_advanced12 = mobile_advanced1.add(mobile_advanced2);
-		console.log(mobile_advanced12);
+		
+		//console.log(mobile_advanced12);
+		var menu3 = menu1.append(menu2.children().addClass('second_menu_element'));
+
+		//var mobile_advanced12 = mobile_advanced1.add(mobile_advanced2);
+		var mobile_advanced12 	= menu3.clone().attr({id:"mobile-advanced", "class":"mobile-advanced1"});
 
     	var menu 			  	= menu_23,
 	    	first_level_items 	= menu_23.find('>li').length,

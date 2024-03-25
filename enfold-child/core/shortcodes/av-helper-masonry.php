@@ -243,7 +243,7 @@ if ( !class_exists( 'avia_masonry' ) )
 			foreach($this->loop as $loopcount=>$entry)
 			{
 				if($loopcount == 5 ): // event block
-					$items .= get_homepage_event_block();
+					//$items .= get_homepage_event_block();
 					// $items .= 	"<a id='av-masonry-".self::$element."-item-".$loopcount."' data-av-masonry-item='".$loopcount."' class='{$class_string}'  {$linktitle} {$markup}>";
 					// $items .= 		"<div class='av-inner-masonry-sizer'></div>"; //responsible for the size
 					// $items .=		"<figure class='av-inner-masonry main_color'>";
@@ -364,6 +364,7 @@ if ( !class_exists( 'avia_masonry' ) )
 
 							
 			} //end loop
+			$items .= get_homepage_event_block();
 			
 			//if its an ajax call return the items only without container
 			if(isset($this->atts['action']) && $this->atts['action'] == 'avia_ajax_masonry_more')

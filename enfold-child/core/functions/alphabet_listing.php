@@ -75,7 +75,8 @@ function generateAtoZHtml()	{
 		//$html .= "<section>";
 		//$html .= "<h2></h2>";
 		//$html .= "<ol>\n";
-		$button = '<a href="#" class="is-checked letter"  data-tag="{All}" data-filter="element-item">All</a><span>•</span>';
+		// $button = '<a href="#" class="is-checked letter"  data-tag="{All}" data-filter="element-item">All</a><span>•</span>';
+		$button = '';
 		
 		for($i = 0;$i<26;$i++)
 		{
@@ -90,11 +91,11 @@ function generateAtoZHtml()	{
 			{
 				if (( $row->name[0] == chr($startCapital + $i)) || ( $row->name[0] == chr($startSmall + $i)))
 				{
-					$tempHtml .= "<div class='single_toggle' data-tags='{All} {".chr($startCapital + $i)."}'> 
+					$tempHtml .= "<div class='single_toggle' data-tags='{All} {".get_office_title($row->term_taxonomy_id)['status']."} {".chr($startCapital + $i)."}'> 
 									<p data-fake-id='#".($row->slug)."' class='toggler flags ".strtoupper($row->slug)."'>
 										<img class='flags-img' src='".CORE_URL."/img/flags/".strtoupper($row->slug).".png'>
 										<span class='flags-title'>" . substr($row->name,0,20) . "</span>
-										<span class='flags-descript'>".get_office_title($row->term_taxonomy_id)."</span>
+										<span class='flags-descript'>".get_office_title($row->term_taxonomy_id)['title']."</span>
 										<span class='toggle_icon' >
 										</span>
 									</p>
@@ -124,9 +125,13 @@ function generateAtoZHtml()	{
 		//$html .= "</ol>\n";
 		//$html .= "</section>";
 		$html .= "</div>";
-		$html .= '<div class="al_clear"></div>';	
+		$html .= '<div class="al_clear"></div>';
 
-		return '<div id="filters"  class="taglist">'.$button.'</div><section class="av_toggle_section" >'.$html.'</section>';
+		$button_ver2 = '<a href="#" class="activeFilter _is-checked letter letter_true"  data-tag="{All}" data-filter="element-item">All</a><span> | </span>';
+		$button_ver2 .= '<a href="#" class=" letter letter_true"  data-tag="{Full Member}" data-filter="element-item">Full Member</a><span> | </span>';
+		$button_ver2 .= '<a href="#" class=" letter letter_true"  data-tag="{Associate Member}" data-filter="element-item">Associate Member</a><span></span>';	
+
+		return '<div id="filters"  class="taglist">'.$button.'<div class="button_ver2">'.$button_ver2.'</div></div><section class="av_toggle_section" >'.$html.'</section>';
 	}
 
 
@@ -280,11 +285,20 @@ function get_office_title($term) {
 		);
 	
 	$query = new WP_Query( $args );
-	$title = "";
+	// $title = "";
+	$title = array();
 	while ( $query->have_posts() ) {
 		$query->the_post();
 		$this_id = $query->post->ID;
-		$title = get_the_title($this_id);
+		$title['title'] = get_the_title($this_id);
+		$ipopi_organizations_status = get_field('ipopi_organizations_status',$this_id);
+		$status = '';
+		if($ipopi_organizations_status){
+			$status = 'Associate Member';
+		} else {
+			$status = 'Full Member';
+		}
+		$title['status'] = $status;
 	}
 	wp_reset_postdata();
 

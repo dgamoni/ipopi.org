@@ -370,13 +370,18 @@ var styles2 = [
     var script = document.createElement('script');
     var url = ['https://www.googleapis.com/fusiontables/v1/query?'];
     url.push('sql=');
-    var query = 'SELECT name, kml_4326 FROM ' +
-        '1foc3xO9DyfSIF6ofvN0kp2bxSfSeKog5FbdWdQ';
+    // var query = 'SELECT name, kml_4326 FROM ' +
+    //     '1foc3xO9DyfSIF6ofvN0kp2bxSfSeKog5FbdWdQ';
+    var query = "SELECT Name, name FROM " +
+        "1dEO9sU4Ting1Zu7UqTl8K-wR9LFSbEGkxtuKiqkJ " +
+        //"1N2LBk4JHwWpOY4d9fobIn27lfnZ5MDy-NoqqRpk " +
+        //"WHERE Name does not contain 'American Samoa'";
+        "WHERE import_notes does not contain 'notvisible'"; 
     var encodedQuery = encodeURIComponent(query);
     url.push(encodedQuery);
-    url.push('&callback=drawMap');
-    url.push('&key=AIzaSyAm9yWCV7JPCTHCJut8whOjARd7pwROFDQ');
-    script.src = url.join('');
+    url.push("&callback=drawMap");
+    url.push("&key=AIzaSyAm9yWCV7JPCTHCJut8whOjARd7pwROFDQ");
+    script.src = url.join("");
     var body = document.getElementsByTagName('body')[0];
     body.appendChild(script);
 

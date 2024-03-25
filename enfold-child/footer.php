@@ -53,8 +53,12 @@
 							if($i != 1) $class2 = " el_after_{$class}  el_before_{$class}";
 							echo "<div class='flex_column {$class} {$class2} {$firstCol}'>";
 							if (function_exists('dynamic_sidebar') && dynamic_sidebar('Footer - column'.$i) ) : else : avia_dummy_widget($i); endif;
+							if ($i == 1 && is_front_page()) { 
+							    //echo '<div><a href="#ulp-pvRWOsbCPHm49u7R"><div class="bell"></div></a></div>';
+							 }
 							echo "</div>";
 							$firstCol = "";
+							
 						}
 
 						do_action('avia_after_footer_columns');
@@ -182,6 +186,9 @@
 	 * tag of your theme, or you will break many plugins, which
 	 * generally use this hook to reference JavaScript files.
 	 */
+	
+
+
 
 
 	wp_footer();
@@ -196,8 +203,6 @@
 
 
 
-<?php if ( is_front_page()) : ?>
-            <a href="#ulp-pvRWOsbCPHm49u7R"><img src="https://ipopi.org/wp-content/uploads/2018/01/bell.svg" id="fixedbutton" height="60" width="60"></a>
-<?php endif; ?>
+
 </body>
 </html>

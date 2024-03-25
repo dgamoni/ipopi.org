@@ -43,8 +43,9 @@
 	$content = apply_filters('the_content', $content);
 	$content = apply_filters('avf_template_builder_content', $content);
 	echo $content;
-	
-	get_template_part('includes/homemap', 'block');	
+	if(is_front_page()):
+		get_template_part('includes/homemap', 'block');	
+	endif;
 
 	$avia_wp_link_pages_args = apply_filters('avf_wp_link_pages_args', array(
 																			'before' =>'<nav class="pagination_split_post">'.__('Pages:','avia_framework'),

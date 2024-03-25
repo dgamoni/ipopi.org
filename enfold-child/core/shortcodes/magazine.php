@@ -545,7 +545,12 @@ if ( !class_exists( 'avia_magazine' ) )
 		{
 				
 			$output			= "";
-			$image	 		= get_the_post_thumbnail( $entry->ID, $this->atts['image_size'][$style] );
+			//$image	 		= get_the_post_thumbnail( $entry->ID, $this->atts['image_size'][$style] );
+			
+			$thumb_url =  wp_get_attachment_url( get_post_thumbnail_id($entry->ID) );
+			$params_news_img = array( 'width' => 149, 'height' => 118 );
+			$image 			= '<img src="'. bfi_thumb( $thumb_url, $params_news_img  ) .'" class="">';
+
 			$link			= get_permalink($entry->ID);
 			$titleAttr		= "title='".__('Link to:','avia_framework')." ".the_title_attribute(array('echo' => 0, 'post' => $entry->ID))."'";
 			$title	 		= "<a href='{$link}' {$titleAttr}>". apply_filters( 'avf_magazine_title', get_the_title( $entry->ID ), $entry ) ."</a>";
@@ -575,6 +580,30 @@ if ( !class_exists( 'avia_magazine' ) )
 			$icon 			=  "<a href='{$link}' {$titleAttr} class='iconfont av-magazine-entry-icon' ".av_icon_string($icontype)."></a>";
 			$extraClass		= "";
 			
+
+			$content_orig = preg_replace( '~\[[^\]]+\]~', '', $entry->post_content );
+			$output_ = array();
+			$output_ = the_shortcodes( $output_, $entry->post_content );
+			$sh_title = $output_[2]["content"];
+			$sh_title1 = $output_[1]["content"];
+			$sh_title3 = $output_[3]["content"];
+			$sh_title4 = $output_[4]["content"];
+			// echo "<pre>", var_dump( $sh_title ), "</pre>";
+			
+			if ($sh_title) {
+				$content = $sh_title;
+			} else if ($sh_title1) {
+				$content = $sh_title1;
+			} else if ($sh_title3) {
+				$content = $sh_title3;
+			} else if ($sh_title4) {
+				$content = $sh_title4;				
+			} else {
+				$content = $content_orig;
+				//echo "<pre>none</pre>";
+			}
+			
+
 			if($style == 'small')
 			{
 				if(empty($this->atts['thumbnails']))
@@ -582,14 +611,15 @@ if ( !class_exists( 'avia_magazine' ) )
 					 $image = "";
 					 $extraClass = "av-magazine-no-thumb";
 				}
-				$excerpt = !empty($entry->post_excerpt) ? $entry->post_excerpt : avia_backend_truncate($entry->post_content, apply_filters( 'avf_magazine_excerpt_length' , 60) , apply_filters( 'avf_magazine_excerpt_delimiter' , " "), "…", true, '');
+				$excerpt = !empty($entry->post_excerpt) ? $entry->post_excerpt : avia_backend_truncate($content, apply_filters( 'avf_magazine_excerpt_length' , 160) , apply_filters( 'avf_magazine_excerpt_delimiter' , " "), "…", true, '');
 			}
 			else
 			{
-				$excerpt = !empty($entry->post_excerpt) ? $entry->post_excerpt : avia_backend_truncate($entry->post_content, apply_filters( 'avf_magazine_excerpt_length' , 60) , apply_filters( 'avf_magazine_excerpt_delimiter' , " "), "…", true, '');
+				$excerpt = !empty($entry->post_excerpt) ? $entry->post_excerpt : avia_backend_truncate($content, apply_filters( 'avf_magazine_excerpt_length' , 160) , apply_filters( 'avf_magazine_excerpt_delimiter' , " "), "…", true, '');
 			}
 			
-					
+			
+
 			
 			$output .= "<article class='hentry av-magazine-entry av-magazine-entry-id-".$entry->ID." av-magazine-format-{$format} av-magazine-type-{$type} av-magazine-entry-".$entry->loop." av-magazine-entry-".$style." {$extraClass}' {$markupEntry}>";
 			
@@ -607,8 +637,8 @@ if ( !class_exists( 'avia_magazine' ) )
 			$output .=			$separator.$author_output;
 			$output .=			"<{$titleTag} class='av-magazine-title entry-title' {$markupTitle}>{$title}</{$titleTag}>";
 			$output .= 		"</header>";
-if($excerpt)$output .=		"<div class='ipopi-picture-legend' {$markupContent}>{$excerpt}</div>";
-//if($excerpt)$output .=		"<div class='av-magazine-content entry-content' {$markupContent}>{$excerpt}</div>";
+//if($excerpt)$output .=		"<div class='ipopi-picture-legend' {$markupContent}>{$excerpt}</div>";
+if($excerpt)$output .=		"<div class='av-magazine-content entry-content' {$markupContent}>{$excerpt}</div>";
 			$output .= 		"</div>";
 			$output .= 		"<footer class='entry-footer'></footer>";
 			$output .= "</article>";
