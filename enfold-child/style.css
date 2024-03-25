@@ -706,6 +706,7 @@ padding-right: 10px;
     padding-left: 0;
     margin-left: 35px;
     line-height: 50px;
+    border-top: 1px solid #a1a1a1;
 }
 
 .page-template-pid-map-template .main_color .toggler.activeTitle,
@@ -721,7 +722,9 @@ padding-right: 10px;
 }
 
 .post-type-archive-organizations .main_color .toggler,
-.post-type-archive-organizations .main_color .toggler:hover {
+.post-type-archive-organizations .main_color .toggler:hover,
+.page-template-organisations-template .main_color .toggler,
+.page-template-organisations-template .main_color .toggler:hover {
     background: inherit;
     border: none;
 }
@@ -783,7 +786,20 @@ h2.ipopi_post_title {
 
 
 /*pidmap*/
-
+.label_companies_products {
+   padding-left: 2em;
+    margin: 0;
+    margin-bottom: 8px;
+}
+    .customBox {
+        background-color: transparent;
+        border:none;
+      position: absolute;
+      left:0px;
+      top: 0px;
+      font-size: 15px;
+      font-weight: 600;
+    }
 .infoname{
     color: white;
 }
@@ -796,6 +812,7 @@ h2.ipopi_post_title {
 }
 .main_color div.si-pointer-bg-top {
         border-top-color: #628d94;
+           /* border-top-color: #f99a48;*/
     border-bottom-color: transparent;
     border-left-color: transparent;
     border-right-color: transparent;
@@ -851,6 +868,9 @@ blockquote h2:before {
     font-weight: 600;
     display: -webkit-box;
 }
+.brand_title:first-child {
+   border-top: 1px solid #a1a1a1;
+}
 .brand_products {
     border-bottom: 1px solid #a1a1a1;
     margin: 0;
@@ -865,6 +885,22 @@ blockquote h2:before {
 }
 .brand_title:hover {
     cursor: pointer;
+}
+.pid-product_title:before {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: normal;
+    speak: none;
+    position: absolute;
+    color: #f99b48;
+    font-size: 25px;
+    content: "\E877";
+    font-family: 'entypo-fontello';
+    right: 15px;
+}
+.activeTitle.pid-product_title:before {
+    color: white;
+    transform: rotate(180deg);
 }
 .brand_title:before {
     -webkit-font-smoothing: antialiased;
@@ -885,8 +921,9 @@ blockquote h2:before {
     margin-top: -1px;
 }
 .brand_title.brand_active:before {
-    content: "\E813";
+    /*content: "\E813";*/
     color: white;
+        transform: rotate(180deg);
 }
 #togg {
     margin-bottom: 20px;
@@ -946,6 +983,9 @@ blockquote h2:before {
     .header_color h3.blog-description {
         margin-left: 13%;
     }
+    .av-magazine-thumbnail.av-magazine-thumbnail-calndar {
+        width: 150px;
+    }
 }
 @media only screen and (max-width: 989px) {
     .ipopimainmenu_sub {
@@ -965,8 +1005,35 @@ blockquote h2:before {
     .header_color h3.blog-description {
         margin: 0;
     }
+
+
+
+}
+@media only screen and (max-width: 989px) and (min-width: 767px) {
+    .av-magazine-thumbnail.av-magazine-thumbnail-calndar {
+        width: 100%;
+        float: none;
+        padding: 0;
+        min-height: 10px;
+    }
+    #top .av-caption-style-overlay .av-masonry-item-with-image.event-masonry .av-inner-masonry-content .home_ipopi_calendar_date {
+        font-size: 11px;
+    padding: 0;
+    margin: 0;
+    }
+    #top .av-caption-style-overlay .av-masonry-item-with-image.event-masonry .av-inner-masonry-content .calendar-title {
+            margin: 0;
+    padding: 0;
+    font-size: 10px;
+    }
+    .main_color article.eventborder {
+        margin: 0;
+    }
 }
 @media only screen and (max-width: 767px) {
+    .responsive #top .av-masonry-entry {
+        width: 100%;
+    }
 	.preheader {
 		display: none;
 	}
@@ -976,6 +1043,12 @@ blockquote h2:before {
 	}
     .responsive .logo img {
         padding: 5px;
+    }
+    .responsive .av-masonry-entry .av-masonry-entry-title+.av-masonry-entry-content {
+       /* display: none;*/
+    }
+    #top .av-caption-style-overlay .av-masonry-entry .av-masonry-entry-title {
+        /*font-size: 19px;*/
     }
 }
 @media only screen and (max-width: 480px) {

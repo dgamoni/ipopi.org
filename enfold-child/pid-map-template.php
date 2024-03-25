@@ -22,6 +22,19 @@
 
 		<div class='container_wrap container_wrap_first main_color <?php avia_layout_class( 'main' ); ?>'>
 
+		<div class='container'>
+			<main class='template-page content  <?php avia_layout_class( 'content' ); ?> units' <?php avia_markup_helper(array('context' => 'content','post_type'=>'page'));?>>
+				<h1>IPOPI PID Map</h1>
+				<h3>Click on a country below to find out more information<br> about Primary Imunodeficiencies (PID) at national level.</h3>
+			</main>
+		</div>
+
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCarBfioQaf3fSqftkPJNozzczQQO8w9iA&v=3.exp&libraries=places,drawing,geometry"></script>
+            <div id="map-wrap">
+            	<div id="map-canvas" style="width: 1600px; height: 420px;"></div>
+            </div>
+            <div id="info"></div>
+
 			<div class='container'>
 
 				<main class='template-page content  <?php avia_layout_class( 'content' ); ?> units' <?php avia_markup_helper(array('context' => 'content','post_type'=>'page'));?>>

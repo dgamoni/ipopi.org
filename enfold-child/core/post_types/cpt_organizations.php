@@ -5,10 +5,10 @@ if ( ! function_exists('custom_post_type_organization') ) {
 function custom_post_type_organization() {
 
 	$labels = array(
-		'name'                  => _x( 'Organizations', 'Organizations', 'ipopi' ),
-		'singular_name'         => _x( 'Organizations', 'Organizations', 'ipopi' ),
-		'menu_name'             => __( 'Organizations', 'ipopi' ),
-		'name_admin_bar'        => __( 'Organizations', 'ipopi' ),
+		'name'                  => _x( 'Organisations', 'Organisations', 'ipopi' ),
+		'singular_name'         => _x( 'Organisations', 'Organisations', 'ipopi' ),
+		'menu_name'             => __( 'Organisations', 'ipopi' ),
+		'name_admin_bar'        => __( 'Organisations', 'ipopi' ),
 		'archives'              => __( 'Item Archives', 'ipopi' ),
 		'attributes'            => __( 'Item Attributes', 'ipopi' ),
 		'parent_item_colon'     => __( 'Parent Item:', 'ipopi' ),
@@ -34,7 +34,7 @@ function custom_post_type_organization() {
 		'filter_items_list'     => __( 'Filter items list', 'ipopi' ),
 	);
 	$args = array(
-		'label'                 => __( 'Organizations', 'ipopi' ),
+		'label'                 => __( 'Organisations', 'ipopi' ),
 		'labels'                => $labels,
 		'supports'              => array( 'title', 'excerpt', 'thumbnail', 'page-attributes', ),
 		'taxonomies'            => array( 'country' ),

@@ -7,6 +7,106 @@
   var infoWindow;
   var country;
 
+     //text overlays
+    function TxtOverlay(pos, txt, cls, map) {
+
+      // Now initialize all properties.
+      this.pos = pos;
+      this.txt_ = txt;
+      this.cls_ = cls;
+      this.map_ = map;
+
+      // We define a property to hold the image's
+      // div. We'll actually create this div
+      // upon receipt of the add() method so we'll
+      // leave it null for now.
+      this.div_ = null;
+
+      // Explicitly call setMap() on this overlay
+      this.setMap(map);
+    }
+
+    TxtOverlay.prototype = new google.maps.OverlayView();
+
+
+
+    TxtOverlay.prototype.onAdd = function() {
+
+      // Note: an overlay's receipt of onAdd() indicates that
+      // the map's panes are now available for attaching
+      // the overlay to the map via the DOM.
+
+      // Create the DIV and set some basic attributes.
+      var div = document.createElement('DIV');
+      div.className = this.cls_;
+
+      div.innerHTML = this.txt_;
+
+      // Set the overlay's div_ property to this DIV
+      this.div_ = div;
+      var overlayProjection = this.getProjection();
+      var position = overlayProjection.fromLatLngToDivPixel(this.pos);
+      div.style.left = position.x + 'px';
+      div.style.top = position.y + 'px';
+      // We add an overlay to a map via one of the map's panes.
+
+      var panes = this.getPanes();
+      panes.floatPane.appendChild(div);
+    }
+    TxtOverlay.prototype.draw = function() {
+
+
+        var overlayProjection = this.getProjection();
+
+        // Retrieve the southwest and northeast coordinates of this overlay
+        // in latlngs and convert them to pixels coordinates.
+        // We'll use these coordinates to resize the DIV.
+        var position = overlayProjection.fromLatLngToDivPixel(this.pos);
+
+
+        var div = this.div_;
+        div.style.left = position.x + 'px';
+        div.style.top = position.y + 'px';
+
+
+
+      }
+      //Optional: helper methods for removing and toggling the text overlay.  
+    TxtOverlay.prototype.onRemove = function() {
+      this.div_.parentNode.removeChild(this.div_);
+      this.div_ = null;
+    }
+    TxtOverlay.prototype.hide = function() {
+      if (this.div_) {
+        this.div_.style.visibility = "hidden";
+      }
+    }
+
+    TxtOverlay.prototype.show = function() {
+      if (this.div_) {
+        this.div_.style.visibility = "visible";
+      }
+    }
+
+    TxtOverlay.prototype.toggle = function() {
+      if (this.div_) {
+        if (this.div_.style.visibility == "hidden") {
+          this.show();
+        } else {
+          this.hide();
+        }
+      }
+    }
+
+    TxtOverlay.prototype.toggleDOM = function() {
+      if (this.getMap()) {
+        this.setMap(null);
+      } else {
+        this.setMap(this.map_);
+      }
+    }
+
+
 function initialize() {
     var myOptions = {
       zoom: 2,
@@ -32,22 +132,165 @@ function initialize() {
 		}
     });
 
+    // var boxlatlng = new google.maps.LatLng(55.17886766, -166.81640625);
+    //   customTxt = "<div>Click on a country below to find out more information<br> about Primary Imunodeficiencies (PID) at national level.</div>"
+    //   txt = new TxtOverlay(boxlatlng, customTxt, "customBox", map);
 
     // these are the map styles
+
+
+var styles2 = [
+    {
+        "featureType": "administrative",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#444444"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.province",
+        "elementType": "all",
+        "stylers": [
+          { 
+                "visibility": "off"
+          }
+        ]
+    },
+    {
+        "featureType": "administrative.locality",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "hue": "#ff0000"
+            },
+            {
+                "saturation": "31"
+            },
+            {
+                "lightness": "45"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#f2f2f2"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#f0ede8"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 45
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#46bcec"
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#9dc0dd"
+            }
+        ]
+    }
+];
     var styles = [
+        // {
+        //   stylers: [
+        //     //{ hue: "#00ffe6" },
+        //     //{ saturation: -20 }
+        //   ]
+        // },
+        // {
+        //   featureType: "landscape",
+        //   stylers: [
+        //     // { hue: "#F0EDE8" },
+        //     // { saturation: 100 }
+        //       { hue: '#F0EDE8' },
+        //       // { saturation: -22 },
+        //       // { lightness: 32 },
+        //   ]
+        // }
         {
-          stylers: [
-            { hue: "#00ffe6" },
-            { saturation: -20 }
-          ]
-        },
-        {
-          featureType: "landscape",
-          stylers: [
-            { hue: "#ffff66" },
-            { saturation: 100 }
-          ]
-        },{
+            featureType: "landscape",
+            elementType: "geometry",
+            stylers: [
+                {
+                    color: "#f0ede8"
+                }
+            ]
+        }
+        ,{
           featureType: "road",
           stylers: [
             { visibility: "off" }
@@ -93,9 +336,30 @@ function initialize() {
             { visibility: "off" }
           ]
         }
+        ,{
+            featureType: "water",
+            elementType: "geometry",
+            stylers: [
+                {
+                    "color": "#9dc0dd"
+                }
+            ]
+        }
+        // ,{
+        //   featureType: "administrative.country",
+        //   elementType: "geometry.stroke",
+        //   stylers: [
+        //     {
+        //       //color: "#989899"
+        //       visibility: "off"
+        //     }
+        //   ]
+        // }
+
+
       ];
 
-    map.setOptions({styles: styles});
+    map.setOptions({styles: styles2});
 
     // Initialize JSONP request
     var script = document.createElement('script');
@@ -152,7 +416,7 @@ function initialize() {
         }
         country = new google.maps.Polygon({
           paths: newCoordinates,
-          strokeColor: '#ff9900',
+          strokeColor: '#989899',
           strokeOpacity: 1,
           strokeWeight: 0.3,
           fillColor: '#ffff66',
@@ -162,7 +426,7 @@ function initialize() {
 
 
         google.maps.event.addListener(country, 'mouseover', function() {
-          this.setOptions({fillOpacity: 0.4});
+          this.setOptions({fillOpacity: 0.5,fillColor: "#f99a48",strokeColor: '#f99a48'});
         });
         google.maps.event.addListener(country, 'mouseout', function() {
           this.setOptions({fillOpacity: 0});
@@ -208,6 +472,11 @@ function initialize() {
                         'opacity': '1'
                     });
                     $("#country_select").val(a.termid);
+
+                    var destination = $('#country_select').offset().top - 50;
+
+                    $('body,html').animate({scrollTop: destination}, 400);
+
                 //}
             }
         });//end ajax

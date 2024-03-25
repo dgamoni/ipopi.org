@@ -227,7 +227,7 @@ function get_office_by_term($term) {
 		//$out_office .= '</div>';
 
 		$out_office .= '<div class="ipopi_organizations_column organizations_email">';
-		$out_office .= '<h3>Email/Website</h3>';
+		$out_office .= '<h3>Email/Web</h3>';
 			if($ipopi_organizations_email_1) {
 				$out_office .= '<p><a href="mailto:'.$ipopi_organizations_email_1.'" target="_blank">'.$ipopi_organizations_email_1.'</a></p>';
 			}

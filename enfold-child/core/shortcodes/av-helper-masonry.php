@@ -240,7 +240,7 @@ if ( !class_exists( 'avia_masonry' ) )
 			//$loopcount = 0;
 			foreach($this->loop as $loopcount=>$entry)
 			{
-				if($loopcount == 3 ): // event block
+				if($loopcount == 5 ): // event block
 					$items .= get_homepage_event_block();
 					// $items .= 	"<a id='av-masonry-".self::$element."-item-".$loopcount."' data-av-masonry-item='".$loopcount."' class='{$class_string}'  {$linktitle} {$markup}>";
 					// $items .= 		"<div class='av-inner-masonry-sizer'></div>"; //responsible for the size

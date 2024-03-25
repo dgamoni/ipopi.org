@@ -36,8 +36,15 @@ function deco_get_firms_by_tax( $first_term_id = 0 ) {
 
 		<div class="country_profile">
 			<h3>Country profile</h3>
-			<p><strong>Patient group: </strong><?php echo $ipopi_country_patientgroup; ?></p>
-			<p><strong>Link: </strong><a href="<?php echo $ipopi_country_link; ?>"><?php echo $ipopi_country_link; ?></a></p>
+			<p><strong>Patient group: </strong>
+			<?php 
+			if($ipopi_country_link):
+				echo '<a href="'.$ipopi_country_link.'" target="_blank">'.$ipopi_country_patientgroup.'</a>';
+			else:
+				echo $ipopi_country_patientgroup;
+			endif; ?>
+			</p>
+			<!-- <p><strong>Link: </strong><a href="<?php echo $ipopi_country_link; ?>"><?php echo $ipopi_country_link; ?></a></p> -->
 			<p><strong>Patient group medical advisory: </strong><?php echo $ipopi_country_medicaladvisory; ?></p>
 			<p><strong>Estimated number of patients: </strong><?php echo $ipopi_country_numberofpatients; ?></p>
 			<p><strong>Based on: </strong><?php echo $ipopi_country_basedon; ?></p>
@@ -114,7 +121,7 @@ $ipopi_country_scid_urlcampaign = get_field('ipopi_country_scid_urlcampaign', $t
 				<?php if($ipopi_country_scid_furtherinformation2): ?><li><strong>Further information: </strong><?php echo $ipopi_country_scid_furtherinformation2; ?></li><?php endif;?>
 				<?php if($ipopi_country_scid_screening): ?><li><strong>Screening of other rare diseases: </strong><?php echo $ipopi_country_scid_screening; ?></li><?php endif;?>
 				<?php if($ipopi_country_scid_lastupdated): ?><li><strong>Last updated: </strong><?php echo $ipopi_country_scid_lastupdated; ?></li><?php endif;?>
-				<li><strong>IPOPI SCID Campaign: </strong><a href="<?php echo $ipopi_country_scid_urlcampaign; ?>"><?php echo $ipopi_country_scid_urlcampaign; ?></a></li>
+				<!-- <li><strong>IPOPI SCID Campaign: </strong><a href="<?php echo $ipopi_country_scid_urlcampaign; ?>"><?php echo $ipopi_country_scid_urlcampaign; ?></a></li> -->
 			</ul>
 		</div>
 	<?php
@@ -150,6 +157,7 @@ $ipopi_country_scid_urlcampaign = get_field('ipopi_country_scid_urlcampaign', $t
 			<strong>Treatment:</strong>
 			<ul>
 				<li><strong>Replacement therapy: </strong></li>
+					<p class="label_companies_products">Companies/products</p>
 
 				<div id="togg" class="togg el_after_av_textblock  el_before_av_hr  enable_toggles">
 				
@@ -407,8 +415,16 @@ function deco_get_firms_by_tax_name( $name = '' ) {
 		
 		<div class="country_profile">
 			<h3>Country profile</h3>
-			<p><strong>Patient group: </strong><?php echo $ipopi_country_patientgroup; ?></p>
-			<p><strong>Link: </strong><a href="<?php echo $ipopi_country_link; ?>"><?php echo $ipopi_country_link; ?></a></p>
+			<!-- <p><strong>Patient group: </strong><?php echo $ipopi_country_patientgroup; ?></p> -->
+			<!-- <p><strong>Link: </strong><a href="<?php echo $ipopi_country_link; ?>"><?php echo $ipopi_country_link; ?></a></p> -->
+			<p><strong>Patient group: </strong>
+			<?php 
+			if($ipopi_country_link):
+				echo '<a href="'.$ipopi_country_link.'" target="_blank">'.$ipopi_country_patientgroup.'</a>';
+			else:
+				echo $ipopi_country_patientgroup;
+			endif; ?>
+			</p>
 			<p><strong>Patient group medical advisory: </strong><?php echo $ipopi_country_medicaladvisory; ?></p>
 			<p><strong>Estimated number of patients: </strong><?php echo $ipopi_country_numberofpatients; ?></p>
 			<p><strong>Based on: </strong><?php echo $ipopi_country_basedon; ?></p>
@@ -485,7 +501,7 @@ $ipopi_country_scid_urlcampaign = get_field('ipopi_country_scid_urlcampaign', $t
 				<?php if($ipopi_country_scid_furtherinformation2): ?><li><strong>Further information: </strong><?php echo $ipopi_country_scid_furtherinformation2; ?></li><?php endif;?>
 				<?php if($ipopi_country_scid_screening): ?><li><strong>Screening of other rare diseases: </strong><?php echo $ipopi_country_scid_screening; ?></li><?php endif;?>
 				<?php if($ipopi_country_scid_lastupdated): ?><li><strong>Last updated: </strong><?php echo $ipopi_country_scid_lastupdated; ?></li><?php endif;?>
-				<li><strong>IPOPI SCID Campaign: </strong><a href="<?php echo $ipopi_country_scid_urlcampaign; ?>"><?php echo $ipopi_country_scid_urlcampaign; ?></a></li>
+				<!-- <li><strong>IPOPI SCID Campaign: </strong><a href="<?php echo $ipopi_country_scid_urlcampaign; ?>"><?php echo $ipopi_country_scid_urlcampaign; ?></a></li> -->
 			</ul>
 		</div>
 	<?php
@@ -521,6 +537,7 @@ $ipopi_country_scid_urlcampaign = get_field('ipopi_country_scid_urlcampaign', $t
 			<strong>Treatment:</strong>
 			<ul>
 				<li><strong>Replacement therapy: </strong></li>
+					<p class="label_companies_products">Companies/products</p>
 
 				<div id="togg" class="togg el_after_av_textblock  el_before_av_hr  enable_toggles">
 				
