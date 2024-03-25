@@ -23,3 +23,9 @@ function ipopi_scripts_child() {
 }
 add_action( 'wp_enqueue_scripts', 'ipopi_scripts_child', 101 );
 
+// Replace avia.js
+function change_aviajs() {
+   wp_dequeue_script( 'avia-default' );
+   wp_enqueue_script( 'avia-default-child', CORE_URL .'/js/avia.js', array('jquery'), 2, true );
+}
+add_action( 'wp_enqueue_scripts', 'change_aviajs', 100 );

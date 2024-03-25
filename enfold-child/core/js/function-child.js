@@ -240,9 +240,30 @@ $.fn.avia_sc_toggle_ = function(options)
 
     //collapse menu
     $('#footer .widget_nav_menu .sub-menu').hide();
-    $('#footer .widget_nav_menu .menu-item-has-children a').click(function(e) {
+    $('#footer .widget_nav_menu .menu-item-has-children > a').click(function(e) {
         e.preventDefault();
         $(this).next('.sub-menu').slideToggle();
+    });
+
+    //collapse MOBIL menu 
+    $('#mobile-advanced .sub-menu').hide();
+    $('#mobile-advanced .menu-item-has-children > a').click(function(e) {
+        e.preventDefault();
+        var sub = $(this).next('.sub-menu');
+        var menu2 = $('.mobile-advanced2');
+        var h = sub.height();
+        var topp = menu2.position().top;
+
+        if (sub.is(':visible')) {
+            sub.slideUp();
+            //console.log('not');
+            menu2.offset({top:topp-h});
+        } else {
+            sub.slideDown();
+            //console.log('visible');
+            menu2.offset({top:topp+h});
+        }
+
     });
 
 

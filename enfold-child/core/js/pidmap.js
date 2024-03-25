@@ -118,6 +118,11 @@ function initialize() {
     map = new google.maps.Map(document.getElementById('map-canvas'),
         myOptions);
 
+    var center = map.getCenter();
+    resizeMap();
+    google.maps.event.trigger(map, "resize");
+    map.setCenter(center);
+
     //init infowin
     infoWindow = new google.maps.InfoWindow({
         maxWidth: 420
@@ -359,7 +364,7 @@ var styles2 = [
 
       ];
 
-    map.setOptions({styles: styles2});
+    map.setOptions({styles: styles2, draggable: true, zoomControl: true, scrollwheel: false, disableDoubleClickZoom: true});
 
     // Initialize JSONP request
     var script = document.createElement('script');

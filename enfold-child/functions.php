@@ -39,6 +39,9 @@ function avia_include_shortcode_template($paths) {
 	return $paths;
 }
 
+
+
+
 // Retirar compressão WP das novas fotos a carregar
 add_filter('jpeg_quality', function($arg){return 100;});
 
@@ -59,6 +62,9 @@ remove_action('wp_print_styles', 'print_emoji_styles');
 remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 remove_action( 'admin_print_styles', 'print_emoji_styles' );
 
+
+
+
 //
 // ENFOLD
 //
@@ -73,3 +79,19 @@ add_action('after_setup_theme', 'remove_portfolio');
 function remove_portfolio() {
 remove_action('init', 'portfolio_register');
 }
+
+// Define email de envio default
+function change_cf_from() {
+    return "info@ipopi.org";
+}
+add_filter('avf_form_from', 'change_cf_from', 10);
+
+// Change mobile menu icon
+add_filter('avf_default_icons','avia_replace_standard_icon', 10, 1);
+function avia_replace_standard_icon($icons)
+{
+$icons['mobile_menu']	 = array( 'font' =>'entypo-fontello', 'icon' => 'ue811');
+return $icons;
+}
+
+

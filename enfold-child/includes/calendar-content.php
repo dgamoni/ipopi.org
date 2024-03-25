@@ -6,8 +6,10 @@ $post_class 	= "post-entry-".avia_get_the_id();
 
     $q_event = new WP_Query( array(
         'post_type'      => 'ipopievent',
-        //'posts_per_page' => - 1,
+        'posts_per_page' => - 1,
         'post_status'    => 'publish',
+        'order'          => 'ASC',
+        'orderby'        => 'menu_order',
     ) );
 
 // check if we got posts to display:

@@ -40,7 +40,7 @@
 					<div class="organizations_header">
 <!-- 						<h1>Member organisations</h1>
 							<p>IPOPI’s National Member Organisations (NMOs), national patient groups that represent the interests of primary immunodeficiencies patients, are the reason for IPOPI’s existence.</p>
-							<p>IPOPI recognises as one group from each country.</p> -->
+							<p>IPOPI recognises one national patient group per country.</p> -->
 							<h1><?php echo get_the_title(); ?></h1>
 							<p><?php echo get_the_excerpt(); ?></p>
 					</div>

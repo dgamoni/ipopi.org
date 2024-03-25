@@ -5,10 +5,10 @@ if ( ! function_exists('custom_post_type_ipopievent') ) {
 function custom_post_type_ipopievent() {
 
 	$labels = array(
-		'name'                  => _x( 'Events', 'Events', 'ipopi' ),
-		'singular_name'         => _x( 'Events', 'Events', 'ipopi' ),
-		'menu_name'             => __( 'Events', 'ipopi' ),
-		'name_admin_bar'        => __( 'Events', 'ipopi' ),
+		'name'                  => _x( 'Calendar', 'Calendar', 'ipopi' ),
+		'singular_name'         => _x( 'Calendar', 'Calendar', 'ipopi' ),
+		'menu_name'             => __( 'Calendar', 'ipopi' ),
+		'name_admin_bar'        => __( 'Calendar', 'ipopi' ),
 		'archives'              => __( 'Item Archives', 'ipopi' ),
 		'attributes'            => __( 'Item Attributes', 'ipopi' ),
 		'parent_item_colon'     => __( 'Parent Item:', 'ipopi' ),
@@ -34,7 +34,7 @@ function custom_post_type_ipopievent() {
 		'filter_items_list'     => __( 'Filter items list', 'ipopi' ),
 	);
 	$args = array(
-		'label'                 => __( 'Events', 'ipopi' ),
+		'label'                 => __( 'Calendar', 'ipopi' ),
 		'labels'                => $labels,
 		'supports'              => array( 'title', 'excerpt', 'thumbnail', 'page-attributes', ),
 		'taxonomies'            => array( '' ),

@@ -730,6 +730,9 @@ padding-right: 10px;
 }
 
 /*event*/
+.page-template-calendar-template blockquote p {
+    font-size: 32px;
+}
 
 .page-template-calendar-template .post-entry {
     margin-bottom: 70px;
@@ -926,7 +929,8 @@ blockquote h2:before {
         transform: rotate(180deg);
 }
 #togg {
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
+    margin-bottom: 40px;
 }
 
 #country_detail {
@@ -969,7 +973,57 @@ blockquote h2:before {
     position: absolute;
 }
 
+.ipopi_brand_logo {
+    margin-left: 35px;
+    margin-top: 5px;
+}
 
+/*mobil menu*/
+
+#mobile-advanced li {
+    text-align: center;
+}
+#mobile-advanced li > a:before,
+.html_header_mobile_behavior #mobile-advanced span > a:before,
+#mobile-advanced .mega_menu_title:before {
+    content: "";
+}
+#mobile-advanced.mobile-advanced1 a,
+#mobile-advanced.mobile-advanced1 .mega_menu_title {
+    font-weight: 800;
+    font-size: 110%;
+}
+
+#bmt {
+    position: relative;
+}
+
+#bmt:before {
+    bottom: 0;
+}
+
+#advanced_menu_toggle, #advanced_menu_hide {
+    height: 82px;
+    width: 82px;
+    line-height: 82px;
+    margin-top: 0;
+    top: 0;
+    right: 0;
+}
+#advanced_menu_toggle:before,
+#advanced_menu_hide:before {
+    font-size: 63px;
+}
+#advanced_menu_hide {
+    background-color: #f99a48;
+    color: white;
+}
+#advanced_menu_hide:before {
+
+}
+#mobile-advanced ul a {
+     padding-left: 28px;
+}
 @media only screen and (max-width: 1116px) {
     .menu_wrap {
 
@@ -1031,6 +1085,13 @@ blockquote h2:before {
     }
 }
 @media only screen and (max-width: 767px) {
+    .responsive .logo img {
+        width: 120px;
+    }
+    .responsive #top #wrap_all .container.av-logo-container {
+        width: 100%;
+        max-width: 100%;
+    }
     .responsive #top .av-masonry-entry {
         width: 100%;
     }
@@ -1039,7 +1100,8 @@ blockquote h2:before {
 	}
 	#advanced_menu_toggle {
 	    right: 0;
-	    top: 50%;
+	   /* top: 50%;*/
+       top: 0;
 	}
     .responsive .logo img {
         padding: 5px;
@@ -1050,8 +1112,69 @@ blockquote h2:before {
     #top .av-caption-style-overlay .av-masonry-entry .av-masonry-entry-title {
         /*font-size: 19px;*/
     }
+        #map-wrap {
+        display: none;
+    }
+    .choose_by_country {
+         padding: 0px; 
+    }
+    a.event-button {
+        font-size: 16px;
+        padding: 10px 10px;
+        min-width: 140px;
+            margin-top: 0px;
+    }
 }
 @media only screen and (max-width: 480px) {
+/*    .responsive #top .slideshow_caption .avia-caption-content {
+        display: none;
+    }*/
+    .avia-slideshow li img {
+        object-fit: cover;
+        height: 300px;
+    }
+    .responsive #av-masonry-1-item-44.av-masonry-entry .av-masonry-entry-title+.av-masonry-entry-content {
+        display: none;
+    }
+/*    a.event-button {
+        font-size: 16px;
+        padding: 10px 10px;
+        min-width: 140px;
+            margin-top: 0px;
+    }*/
+    .calendar-title {
+        font-size: 90%;
+        font-weight: 700;
+    }
+    .event-masonry h3.calendar-title {
+        font-size: 90%;
+    }
+
+    #top .av-caption-style-overlay .av-masonry-item-with-image.event-masonry .av-inner-masonry-content .home_ipopi_calendar_date {
+        font-size: 16px;
+        padding-right: 0;
+        line-height: 19px;
+    }
+    .av-magazine-thumbnail.av-magazine-thumbnail-calndar {
+        /*width: 90px;*/
+    }
+}
+@media only screen and (max-width: 400px) {
+
+
+    #top .av-caption-style-overlay .av-masonry-entry .av-masonry-entry-title {
+        font-size: 26px;
+    }
+/*    .responsive #top .slideshow_caption .avia-caption-content {
+        font-size: 11px !important;
+    }*/
+    .caption_bottom .slideshow_caption .slideshow_inner_caption {
+        padding: 0;
+    }
+    .page-template-pid-map-template .main_color .toggler,
+    .page-template-pid-map-template .main_color .toggler:hover {
+        padding-right: 30px;
+    }
 
 }
 .av-magazine-entry {
@@ -1081,6 +1204,13 @@ blockquote h2:before {
 }
 .widget_nav_menu a {
 	padding: 0 0 0 0;
+    color: #808080;
+}
+#nav_menu-2.widget_nav_menu a {
+    color: black;
+}
+#footer #nav_menu-2.widget {
+    padding-top: 17px;
 }
 .widget_nav_menu ul:first-child>.current-menu-item>a, .widget_nav_menu ul:first-child>.current_page_item>a {
     padding: 16px 7px 7px 0;
@@ -1090,7 +1220,9 @@ blockquote h2:before {
     padding: inherit;
 }
 
-
+#nav_menu-2 .seperator.extralight-border:before {
+    content: '•';
+}
 
 
 
@@ -1108,4 +1240,45 @@ display: none;
 /* hero font */
 .avia-caption-title {
 	font-weight: 800;
+}
+
+#mobile-advanced.mobile-advanced1 {
+    padding-bottom: 0;
+    top: 80px;
+    padding-top: 0;
+}
+#mobile-advanced.mobile-advanced2 {
+    /*top: 1160px;*/
+    /*top: 1151px;*/
+        top: 384px;
+    padding-top: 0;
+}
+#mobile-advanced.mobile-advanced2 a {
+    color: #808080;
+    font-weight: 600;
+    font-size: 110%;
+}
+.avia_desktop #advanced_menu_hide {
+    display: none;
+}
+
+#mobile-advanced .sub-menu {
+    background-color: #f99a48;
+}
+#mobile-advanced .sub-menu a {
+    color: white;
+    border: none;
+    padding-bottom: 0;
+}
+#mobile-advanced .sub-menu .avia-menu-text {
+    display: inline-block;
+    border-bottom: 1px solid white;
+    padding: 0 10px 13px 10px;
+
+}
+
+/* pids faq page accordion */
+.main_color .toggler:hover {
+color: white;
+background: #f99b48;
 }

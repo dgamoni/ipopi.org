@@ -111,6 +111,31 @@ $ipopi_country_scid_screening = get_field('ipopi_country_scid_screening', $taxon
 $ipopi_country_scid_lastupdated = get_field('ipopi_country_scid_lastupdated', $taxonomy. '_' . $first_term_id);
 $ipopi_country_scid_urlcampaign = get_field('ipopi_country_scid_urlcampaign', $taxonomy. '_' . $first_term_id);
 
+$arrParsedUrl = parse_url($ipopi_country_scid_furtherinformation1);
+if (!empty($arrParsedUrl['scheme']))
+{
+    if ($arrParsedUrl['scheme'] === "http")
+    {
+    	$ipopi_country_scid_furtherinformation1 = '<a href="'.$ipopi_country_scid_furtherinformation1.'" target="_blank">'.$ipopi_country_scid_furtherinformation1.'</a>';
+    }
+    else if ($arrParsedUrl['scheme'] === "https")
+    {
+    	$ipopi_country_scid_furtherinformation1 = '<a href="'.$ipopi_country_scid_furtherinformation1.'" target="_blank">'.$ipopi_country_scid_furtherinformation1.'</a>';
+    }
+}
+$arrParsedUrl = parse_url($ipopi_country_scid_furtherinformation2);
+if (!empty($arrParsedUrl['scheme']))
+{
+    if ($arrParsedUrl['scheme'] === "http")
+    {
+    	$ipopi_country_scid_furtherinformation2 = '<a href="'.$ipopi_country_scid_furtherinformation2.'" target="_blank">'.$ipopi_country_scid_furtherinformation2.'</a>';
+    }
+    else if ($arrParsedUrl['scheme'] === "https")
+    {
+    	$ipopi_country_scid_furtherinformation2 = '<a href="'.$ipopi_country_scid_furtherinformation2.'" target="_blank">'.$ipopi_country_scid_furtherinformation2.'</a>';
+    }
+}
+
 	ob_start(); ?>
 
 		<div class="scid_newborn_screening">
@@ -250,6 +275,7 @@ $ipopi_product_intervalsofinfusionpid = get_field('ipopi_product_intervalsofinfu
 $ipopi_product_storagepreservation = get_field('ipopi_product_storagepreservation', $r->post->ID) ? get_field('ipopi_product_storagepreservation', $r->post->ID) : 'N/A';
 $ipopi_product_timeforreconstitution = get_field('ipopi_product_timeforreconstitutiony', $r->post->ID) ? get_field('ipopi_product_timeforreconstitution', $r->post->ID) : 'N/A';
 $ipopi_product_packaging = get_field('ipopi_product_packaging', $r->post->ID) ? get_field('ipopi_product_packaging', $r->post->ID) : 'N/A';
+$ipopi_brand_logo = get_field('ipopi_brand_logo','term_' . $object_terms_brand[0]->term_id);
 ?>
 <?php //var_dump($i); ?>
 
@@ -257,6 +283,9 @@ $ipopi_product_packaging = get_field('ipopi_product_packaging', $r->post->ID) ? 
 	<?php if($i==1): ?>
 		<p class="brand_title"><?php echo $object_terms_brand[0]->name; ?></p>
 		<div class="brand_wrap"><!-- brand wrap1 -->
+			<?php if($ipopi_brand_logo): ?>
+				<img class="ipopi_brand_logo" src="<?php echo $ipopi_brand_logo;?>">
+			<?php endif;?>
 			<p class="brand_products"><?php echo _e('Products:','ipopi'); ?></p>
 		<?php $brand_id = $object_terms_brand[0]->term_id; ?>
 	<?php endif;?>	
@@ -265,6 +294,9 @@ $ipopi_product_packaging = get_field('ipopi_product_packaging', $r->post->ID) ? 
 		</div><!-- end brand wrap -->
 		<p class="brand_title"><?php echo $object_terms_brand[0]->name; ?></p>
 		<div class="brand_wrap"><!-- brand wrap -->
+			<?php if($ipopi_brand_logo): ?>
+				<img class="ipopi_brand_logo" src="<?php echo $ipopi_brand_logo;?>">
+			<?php endif;?>
 			<p class="brand_products"><?php echo _e('Products:','ipopi'); ?></p>
 	<?php endif;?>
 
@@ -343,7 +375,7 @@ $ipopi_product_packaging = get_field('ipopi_product_packaging', $r->post->ID) ? 
 				$ipopi_country_treatment_genetherapy = get_field('ipopi_country_treatment_genetherapy', $taxonomy. '_' . $first_term_id) ? get_field('ipopi_country_treatment_genetherapy', 'term_' . $first_term_id) : 'No';
 				?>
 				</div>
-				<li><strong>BMT: </strong><?php echo $ipopi_country_treatment_transplant; ?></li>
+				<li id="bmt"><strong>BMT: </strong><?php echo $ipopi_country_treatment_transplant; ?></li>
 				<li><strong>Gene therapy: </strong><?php echo $ipopi_country_treatment_genetherapy; ?></li>
 
 			</ul>
@@ -491,6 +523,31 @@ $ipopi_country_scid_screening = get_field('ipopi_country_scid_screening', $taxon
 $ipopi_country_scid_lastupdated = get_field('ipopi_country_scid_lastupdated', $taxonomy. '_' . $first_term_id);
 $ipopi_country_scid_urlcampaign = get_field('ipopi_country_scid_urlcampaign', $taxonomy. '_' . $first_term_id);
 
+$arrParsedUrl = parse_url($ipopi_country_scid_furtherinformation1);
+if (!empty($arrParsedUrl['scheme']))
+{
+    if ($arrParsedUrl['scheme'] === "http")
+    {
+    	$ipopi_country_scid_furtherinformation1 = '<a href="'.$ipopi_country_scid_furtherinformation1.'" target="_blank">'.$ipopi_country_scid_furtherinformation1.'</a>';
+    }
+    else if ($arrParsedUrl['scheme'] === "https")
+    {
+    	$ipopi_country_scid_furtherinformation1 = '<a href="'.$ipopi_country_scid_furtherinformation1.'" target="_blank">'.$ipopi_country_scid_furtherinformation1.'</a>';
+    }
+}
+$arrParsedUrl = parse_url($ipopi_country_scid_furtherinformation2);
+if (!empty($arrParsedUrl['scheme']))
+{
+    if ($arrParsedUrl['scheme'] === "http")
+    {
+    	$ipopi_country_scid_furtherinformation2 = '<a href="'.$ipopi_country_scid_furtherinformation2.'" target="_blank">'.$ipopi_country_scid_furtherinformation2.'</a>';
+    }
+    else if ($arrParsedUrl['scheme'] === "https")
+    {
+    	$ipopi_country_scid_furtherinformation2 = '<a href="'.$ipopi_country_scid_furtherinformation2.'" target="_blank">'.$ipopi_country_scid_furtherinformation2.'</a>';
+    }
+}
+
 	ob_start(); ?>
 
 		<div class="scid_newborn_screening">
@@ -630,6 +687,7 @@ $ipopi_product_intervalsofinfusionpid = get_field('ipopi_product_intervalsofinfu
 $ipopi_product_storagepreservation = get_field('ipopi_product_storagepreservation', $r->post->ID) ? get_field('ipopi_product_storagepreservation', $r->post->ID) : 'N/A';
 $ipopi_product_timeforreconstitution = get_field('ipopi_product_timeforreconstitutiony', $r->post->ID) ? get_field('ipopi_product_timeforreconstitution', $r->post->ID) : 'N/A';
 $ipopi_product_packaging = get_field('ipopi_product_packaging', $r->post->ID) ? get_field('ipopi_product_packaging', $r->post->ID) : 'N/A';
+$ipopi_brand_logo = get_field('ipopi_brand_logo','term_' . $object_terms_brand[0]->term_id);
 ?>
 <?php //var_dump($r->post); ?>
 
@@ -637,6 +695,9 @@ $ipopi_product_packaging = get_field('ipopi_product_packaging', $r->post->ID) ? 
 	<?php if($i==1): ?>
 		<p class="brand_title"><?php echo $object_terms_brand[0]->name; ?></p>
 		<div class="brand_wrap"><!-- brand wrap1 -->
+			<?php if($ipopi_brand_logo): ?>
+				<img class="ipopi_brand_logo" src="<?php echo $ipopi_brand_logo;?>">
+			<?php endif;?>
 			<p class="brand_products"><?php echo _e('Products:','ipopi'); ?></p>
 		<?php $brand_id = $object_terms_brand[0]->term_id; ?>
 	<?php endif;?>	
@@ -645,6 +706,9 @@ $ipopi_product_packaging = get_field('ipopi_product_packaging', $r->post->ID) ? 
 		</div><!-- end brand wrap -->
 		<p class="brand_title"><?php echo $object_terms_brand[0]->name; ?></p>
 		<div class="brand_wrap"><!-- brand wrap -->
+			<?php if($ipopi_brand_logo): ?>
+				<img class="ipopi_brand_logo" src="<?php echo $ipopi_brand_logo;?>">
+			<?php endif;?>
 			<p class="brand_products"><?php echo _e('Products:','ipopi'); ?></p>
 	<?php endif;?>
 
@@ -722,7 +786,7 @@ $ipopi_product_packaging = get_field('ipopi_product_packaging', $r->post->ID) ? 
 				$ipopi_country_treatment_genetherapy = get_field('ipopi_country_treatment_genetherapy', $taxonomy. '_' . $first_term_id) ? get_field('ipopi_country_treatment_genetherapy', 'term_' . $first_term_id) : 'No';
 				?>
 				</div>
-				<li><strong>BMT: </strong><?php echo $ipopi_country_treatment_transplant; ?></li>
+				<li id="bmt"><strong>BMT: </strong><?php echo $ipopi_country_treatment_transplant; ?></li>
 				<li><strong>Gene therapy: </strong><?php echo $ipopi_country_treatment_genetherapy; ?></li>
 
 			</ul>
