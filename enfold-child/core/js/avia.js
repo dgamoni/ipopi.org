@@ -26,7 +26,8 @@
 
     	
         //check if user uses IE7 - if yes don't execute the function or the menu will break
-        if(aviabodyclasses.indexOf("avia-msie-7") == -1) avia_responsive_menu();
+        //if(aviabodyclasses.indexOf("avia-msie-7") == -1) avia_responsive_menu();
+        avia_responsive_menu();
 
         // decreases header size when user scrolls down
         avia_header_size();
@@ -38,7 +39,7 @@
 		avia_sticky_submenu();        
 		
 		//activates the sticky submenu
-		avia_hamburger_menu();
+		//avia_hamburger_menu();
 
         //show scroll top button
         avia_scroll_top_fade();
@@ -470,8 +471,9 @@
     function avia_responsive_menu()
     {
     	var $html = $('html'), win = $(window), header = $('.responsive #header');
-
+    	console.log('avia_responsive_menu');
     	if(!header.length) return;
+    	console.log('run');
     	//dgamoni fix mobil menu
 		var menu1 			  	= header.find('.main_menu ul:eq(0)');
 		//console.log(menu1);
@@ -482,7 +484,7 @@
 		var mobile_advanced1 	= menu1.clone().attr({id:"mobile-advanced", "class":"mobile-advanced1"});
 		var mobile_advanced2 	= menu2.clone().attr({id:"mobile-advanced", "class":"mobile-advanced2"});
 		var mobile_advanced12 = mobile_advanced1.add(mobile_advanced2);
-		//console.log(mobile_advanced12);
+		console.log(mobile_advanced12);
 
     	var menu 			  	= menu_23,
 	    	first_level_items 	= menu_23.find('>li').length,

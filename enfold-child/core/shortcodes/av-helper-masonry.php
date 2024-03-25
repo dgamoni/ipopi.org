@@ -238,6 +238,8 @@ if ( !class_exists( 'avia_masonry' ) )
 			$all_sorts  = array();
 			$sort_array = array();
 			//$loopcount = 0;
+			$not_view_map = false;
+			
 			foreach($this->loop as $loopcount=>$entry)
 			{
 				if($loopcount == 5 ): // event block

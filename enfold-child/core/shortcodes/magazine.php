@@ -364,13 +364,20 @@ if ( !class_exists( 'avia_magazine' ) )
 					if(empty($params['post_type'])) $params['post_type'] = get_post_types();
 					if(is_string($params['post_type'])) $params['post_type'] = explode(',', $params['post_type']);
 									
-					$query = array(	'orderby' 	=> 'date',
+					$query = array(	
+					                'orderby' 	=> 'date',
 									'order' 	=> 'DESC',
 									'paged' 	=> $page,
-									'post_type' => $params['post_type'],
+									'post_status'    => 'publish',
+									//'post_type' => $params['post_type'],
+									'post_type' => 'post',
 									'post__not_in' => (!empty($no_duplicates)) ? $avia_config['posts_on_current_page'] : array(),
 									'offset'	=> $params['offset'],
-									'posts_per_page' => $params['items'],
+									//'posts_per_page' => $params['items'],
+									'posts_per_page' => -1,
+									'ignore_sticky_posts' => true,
+									'suppress_filters' => false,
+									//'_ignore_default_menu_order' => true,
 									'tax_query' => array( 	array( 	'taxonomy' 	=> $params['taxonomy'],
 																	'field' 	=> 'id',
 																	'terms' 	=> $terms,
@@ -385,10 +392,19 @@ if ( !class_exists( 'avia_magazine' ) )
 				$query = $params['custom_query'];
 			}
 
-
+            
 			$query   = apply_filters('avf_magazine_entries_query', $query, $params);
-			$entries = get_posts( $query );
+			//$entries = get_posts( $query );
+			//var_dump($terms[0]);
 			
+			global $wpdb;
+			$entries = $wpdb->get_results( 
+            	"SELECT wp_posts.* FROM wp_posts LEFT JOIN wp_term_relationships ON (wp_posts.ID = wp_term_relationships.object_id) WHERE 1=1 AND ( wp_term_relationships.term_taxonomy_id IN (".$terms[0].") ) AND wp_posts.post_type = 'post' AND ((wp_posts.post_status = 'publish')) GROUP BY wp_posts.ID ORDER BY wp_posts.post_date DESC"
+            );
+			//$query_ = new WP_Query;
+            //$entries = $query_->query($query);
+            
+            			
 			if(!empty($entries) && empty($params['ignore_dublicate_rule']))
 			{
 				foreach($entries as $entry)
@@ -404,9 +420,12 @@ if ( !class_exists( 'avia_magazine' ) )
 			else
 			{
 				$this->entries = $entries;
+				//$this->query = $query_->request;
 			}
 		}
-		
+
+
+
 		function html()
 		{
 			$output = "";
@@ -454,6 +473,7 @@ if ( !class_exists( 'avia_magazine' ) )
 			
 			
 			$output .="</div>";
+			//$output .=var_dump($this->query);
 			return $output;
 		}
 		

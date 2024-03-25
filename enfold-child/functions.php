@@ -94,4 +94,35 @@ $icons['mobile_menu']	 = array( 'font' =>'entypo-fontello', 'icon' => 'ue811');
 return $icons;
 }
 
+add_action('wp_footer', 'add_custom_css');
+function add_custom_css() {
+    global $current_user;
+    ?>
+    <script>
+        jQuery(document).ready(function($) {
 
+        });
+    </script>
+    <style>
+    #top .ipopimainmenu_sub.sub_menu li ul li ul.sub-menu {
+        left: 169px;
+        top: 0px;
+    }
+    #top .av-main-nav ul ul {
+        left: 207px;
+    }
+        #top input[type="text"]#stripeAmount_0 {
+            display: inline-block;
+            margin-right: 5px;
+        }
+        <?php if (is_user_logged_in()){ ?> 
+            #mobile-advanced.mobile-advanced1 {
+                    margin-top: 45px;
+            }
+            #mobile-advanced.mobile-advanced2 {
+                    margin-top: 45px;
+            }
+        <?php } ?>
+    </style>
+    <?php
+}

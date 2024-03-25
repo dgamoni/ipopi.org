@@ -193,5 +193,11 @@
 <div id="fb-root"></div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/themes/enfold-child/js/pagination.js"></script>
+
+
+
+<?php if ( is_front_page()) : ?>
+            <a href="#ulp-pvRWOsbCPHm49u7R"><img src="https://ipopi.org/wp-content/uploads/2018/01/bell.svg" id="fixedbutton" height="60" width="60"></a>
+<?php endif; ?>
 </body>
 </html>
