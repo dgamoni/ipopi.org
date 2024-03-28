@@ -7,13 +7,7 @@ global $avia_config;
 
 	<div class="entry-content-wrapper clearfix">
 		<header class="entry-content-header">
-            <?php //$thumb = get_the_post_thumbnail(get_the_ID(), $avia_config['size']); ?>
-            <?php //if($thumb) echo "<div class='page-thumb'>{$thumb}</div>";?>
-<!--             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCarBfioQaf3fSqftkPJNozzczQQO8w9iA&v=3.exp&libraries=places,drawing,geometry"></script>
-            <div id="map-wrap">
-            	<div id="map-canvas" style="width: 1200px; height: 420px;"></div>
-            </div>
-            <div id="info"></div> -->
+
 		</header>
 
 
